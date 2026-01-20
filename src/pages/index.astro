@@ -1,0 +1,561 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get featured projects and news
+const featuredProjects = await getCollection('projects', ({ data }) => {
+  return data.featured === true && data.draft !== true;
+});
+
+const latestNews = await getCollection('news', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Sort news by date
+const sortedNews = latestNews.sort((a, b) => 
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+).slice(0, 3);
+---
+
+<BaseLayout title="Home">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Powering Pakistan's
+          <span class="text-gradient">Sustainable Future</span>
+        </h1>
+        <p class="hero-subtitle">
+          Pakistan's first Shariah-compliant green energy fund, investing in renewable 
+          energy projects that deliver both financial returns and environmental impact.
+        </p>
+        <div class="hero-actions">
+          <a href="/projects" class="btn btn-primary btn-lg">Explore Projects</a>
+          <a href="/investor-relations" class="btn btn-outline btn-lg">Investor Relations</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg" aria-hidden="true"></div>
+  </section>
+
+  <!-- Value Proposition Section -->
+  <section class="section features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose BCEM?</h2>
+        <p class="section-subtitle">
+          Combining Shariah-compliant investment principles with cutting-edge 
+          renewable energy technology.
+        </p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Clean Energy Focus</h3>
+          <p class="feature-text">
+            Investing exclusively in renewable energy projects including wind, solar, 
+            and hybrid installations across Pakistan.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Shariah Compliant</h3>
+          <p class="feature-text">
+            Fully compliant with Islamic finance principles, certified by our 
+            independent Shariah Supervisory Board.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Strong Governance</h3>
+          <p class="feature-text">
+            Transparent operations with robust corporate governance, regular 
+            reporting, and experienced leadership.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 20V10M12 20V4M6 20v-6"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Sustainable Returns</h3>
+          <p class="feature-text">
+            Delivering competitive returns while contributing to Pakistan's 
+            sustainable development goals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Preview Section -->
+  <section class="section projects-preview bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Projects</h2>
+        <p class="section-subtitle">
+          Discover our portfolio of renewable energy installations powering 
+          communities across Pakistan.
+        </p>
+      </div>
+      
+      <div class="projects-grid">
+        {featuredProjects.length > 0 ? (
+          featuredProjects.map((project) => (
+            <article class="project-card card">
+              <div class="project-image">
+                <img 
+                  src={project.data.image || '/images/project-placeholder.jpg'} 
+                  alt={project.data.imageAlt || project.data.title}
+                  loading="lazy"
+                />
+                <span class="project-category">{project.data.category}</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">{project.data.title}</h3>
+                <p class="project-location">{project.data.location}</p>
+                <p class="project-capacity">{project.data.capacity} Capacity</p>
+                <a href={`/projects/${project.slug}`} class="btn btn-outline btn-sm">
+                  Learn More
+                </a>
+              </div>
+            </article>
+          ))
+        ) : (
+          <p class="text-center text-secondary">Projects coming soon.</p>
+        )}
+      </div>
+      
+      <div class="text-center mt-8">
+        <a href="/projects" class="btn btn-primary">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-value">150+</span>
+          <span class="stat-label">MW Installed Capacity</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">5</span>
+          <span class="stat-label">Operational Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">300+</span>
+          <span class="stat-label">GWh Annual Generation</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">200K+</span>
+          <span class="stat-label">Tons CO₂ Offset/Year</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News Section -->
+  <section class="section news-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Latest News</h2>
+        <p class="section-subtitle">
+          Stay updated with the latest developments from BCEM.
+        </p>
+      </div>
+      
+      <div class="news-grid">
+        {sortedNews.length > 0 ? (
+          sortedNews.map((article) => (
+            <article class="news-card card">
+              <div class="card-body">
+                <span class="news-category">{article.data.category}</span>
+                <h3 class="card-title">
+                  <a href={`/news/${article.slug}`}>{article.data.title}</a>
+                </h3>
+                <p class="card-text">{article.data.excerpt}</p>
+                <time class="news-date" datetime={article.data.publishDate.toISOString()}>
+                  {article.data.publishDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+              </div>
+            </article>
+          ))
+        ) : (
+          <p class="text-center text-secondary">News coming soon.</p>
+        )}
+      </div>
+      
+      <div class="text-center mt-8">
+        <a href="/news" class="btn btn-outline">View All News</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Invest in Pakistan's Clean Energy Future</h2>
+        <p class="cta-text">
+          Join us in building a sustainable future. Explore investment 
+          opportunities with Pakistan's first Shariah-compliant green energy fund.
+        </p>
+        <div class="cta-actions">
+          <a href="/investor-relations" class="btn btn-secondary btn-lg">Investor Information</a>
+          <a href="/contact" class="btn btn-outline btn-lg">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    position: relative;
+    padding-block: var(--space-24);
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    overflow: hidden;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-3xl);
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-6);
+  }
+  
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: var(--font-size-6xl);
+    }
+  }
+  
+  .text-gradient {
+    display: block;
+    background: linear-gradient(90deg, var(--color-secondary-400), var(--color-secondary-300));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-primary-100);
+    max-width: var(--container-2xl);
+    margin-bottom: var(--space-8);
+  }
+  
+  @media (min-width: 768px) {
+    .hero-subtitle {
+      font-size: var(--font-size-xl);
+    }
+  }
+  
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+  
+  .hero .btn-outline {
+    border-color: var(--color-primary-200);
+    color: var(--color-text-inverse);
+  }
+  
+  .hero .btn-outline:hover {
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-900);
+  }
+  
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    background: url('/images/hero-pattern.svg') no-repeat center right;
+    background-size: cover;
+    opacity: 0.1;
+  }
+  
+  /* Features Section */
+  .features-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+  
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .feature-card {
+    text-align: center;
+    padding: var(--space-6);
+  }
+  
+  .feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-600);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+  }
+  
+  .feature-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+  
+  .feature-text {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+  }
+  
+  /* Projects Preview */
+  .projects-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+  
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .project-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+  
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+  
+  .project-category {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-primary-600);
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+  
+  .project-location,
+  .project-capacity {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+  
+  /* Stats Section */
+  .stats {
+    background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary-800) 100%);
+    color: var(--color-text-inverse);
+  }
+  
+  .stats-grid {
+    display: grid;
+    gap: var(--space-8);
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .stat-item {
+    padding: var(--space-4);
+  }
+  
+  .stat-value {
+    display: block;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    margin-bottom: var(--space-2);
+    color: var(--color-secondary-400);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-200);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+  
+  /* News Preview */
+  .news-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+  
+  @media (min-width: 768px) {
+    .news-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .news-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .news-category {
+    display: inline-block;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary-600);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: var(--space-2);
+  }
+  
+  .news-card .card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .news-card .card-title a:hover {
+    color: var(--color-primary-600);
+  }
+  
+  .news-date {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-4);
+  }
+  
+  /* CTA Section */
+  .cta {
+    background: linear-gradient(135deg, var(--color-primary-800) 0%, var(--color-primary-900) 100%);
+    color: var(--color-text-inverse);
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: var(--container-3xl);
+    margin-inline: auto;
+  }
+  
+  .cta-title {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-4);
+  }
+  
+  @media (min-width: 768px) {
+    .cta-title {
+      font-size: var(--font-size-4xl);
+    }
+  }
+  
+  .cta-text {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-200);
+    max-width: var(--container-2xl);
+    margin-inline: auto;
+    margin-bottom: var(--space-8);
+  }
+  
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+  
+  .cta .btn-outline {
+    border-color: var(--color-primary-200);
+    color: var(--color-text-inverse);
+  }
+  
+  .cta .btn-outline:hover {
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-900);
+  }
+</style>

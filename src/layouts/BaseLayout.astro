@@ -1,0 +1,426 @@
+---
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  noIndex?: boolean;
+}
+
+const { 
+  title, 
+  description = 'Burj Clean Energy Modaraba - Pakistan\'s first Shariah-compliant green energy fund. Investing in renewable energy for a sustainable future.',
+  ogImage = '/images/og-default.jpg',
+  noIndex = false
+} = Astro.props;
+
+const siteTitle = 'Burj Clean Energy Modaraba';
+const fullTitle = title === 'Home' ? siteTitle : `${title} | ${siteTitle}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  
+  <!-- Primary Meta Tags -->
+  <title>{fullTitle}</title>
+  <meta name="title" content={fullTitle} />
+  <meta name="description" content={description} />
+  {noIndex && <meta name="robots" content="noindex, nofollow" />}
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+  <meta property="og:site_name" content={siteTitle} />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={fullTitle} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/" class="logo" aria-label="Burj Clean Energy Modaraba - Home">
+          <img src="/images/logo.svg" alt="" width="180" height="48" />
+          <span class="sr-only">Burj Clean Energy Modaraba</span>
+        </a>
+        
+        <button 
+          class="nav-toggle" 
+          aria-expanded="false" 
+          aria-controls="nav-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="nav-toggle-icon"></span>
+        </button>
+        
+        <ul id="nav-menu" class="nav-menu" role="list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/governance">Governance</a></li>
+          <li><a href="/products">Products</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/investor-relations">Investor Relations</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Main Content -->
+  <main id="main-content">
+    <slot />
+  </main>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <a href="/" class="footer-logo">
+            <img src="/images/logo-white.svg" alt="Burj Clean Energy Modaraba" width="160" height="42" />
+          </a>
+          <p class="footer-tagline">
+            Pakistan's first Shariah-compliant green energy fund, investing in renewable energy for a sustainable future.
+          </p>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/governance">Governance</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/projects">Projects</a></li>
+          </ul>
+        </div>
+        
+        <!-- Investor Resources -->
+        <div class="footer-section">
+          <h3 class="footer-heading">Investor Resources</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="/investor-relations">Investor Relations</a></li>
+            <li><a href="/investor-relations#financials">Financial Reports</a></li>
+            <li><a href="/investor-relations#notices">Corporate Notices</a></li>
+            <li><a href="/news">Latest News</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3 class="footer-heading">Contact Us</h3>
+          <address class="footer-contact">
+            <p>Burj Clean Energy Modaraba</p>
+            <p>Karachi, Pakistan</p>
+            <p>
+              <a href="mailto:info@burjmodaraba.com">info@burjmodaraba.com</a>
+            </p>
+          </address>
+        </div>
+      </div>
+      
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          &copy; {new Date().getFullYear()} Burj Clean Energy Modaraba. All rights reserved.
+        </p>
+        <ul class="footer-legal" role="list">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="/disclaimer">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Mobile Navigation Script -->
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+        navMenu.classList.toggle('is-open');
+      });
+    }
+  </script>
+</body>
+</html>
+
+<style>
+  /* Header Styles */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-4);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 48px;
+    width: auto;
+  }
+  
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    transition: transform var(--transition-fast);
+  }
+  
+  .nav-toggle-icon {
+    position: relative;
+  }
+  
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+  
+  .nav-toggle-icon::before {
+    top: -8px;
+  }
+  
+  .nav-toggle-icon::after {
+    bottom: -8px;
+  }
+  
+  .nav-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-menu.is-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border-light);
+    padding: var(--space-4);
+    gap: var(--space-2);
+  }
+  
+  .nav-menu a {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+  }
+  
+  .nav-menu a:hover {
+    background-color: var(--color-background-alt);
+    text-decoration: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .nav-toggle {
+      display: none;
+    }
+    
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+    
+    .nav-menu a {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--font-size-sm);
+    }
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: var(--color-primary-800);
+    color: var(--color-primary-100);
+    padding-block: var(--space-16);
+  }
+  
+  .footer-grid {
+    display: grid;
+    gap: var(--space-8);
+  }
+  
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+  
+  .footer-logo img {
+    height: 42px;
+    width: auto;
+    margin-bottom: var(--space-4);
+  }
+  
+  .footer-tagline {
+    color: var(--color-primary-200);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+  }
+  
+  .footer-heading {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-4);
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: var(--space-2);
+  }
+  
+  .footer-links a {
+    color: var(--color-primary-200);
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+  }
+  
+  .footer-links a:hover {
+    color: var(--color-text-inverse);
+    text-decoration: none;
+  }
+  
+  .footer-contact {
+    font-style: normal;
+    color: var(--color-primary-200);
+    font-size: var(--font-size-sm);
+  }
+  
+  .footer-contact p {
+    margin-bottom: var(--space-1);
+  }
+  
+  .footer-contact a {
+    color: var(--color-primary-200);
+  }
+  
+  .footer-contact a:hover {
+    color: var(--color-text-inverse);
+  }
+  
+  .footer-bottom {
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-primary-700);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .footer-copyright {
+    color: var(--color-primary-300);
+    font-size: var(--font-size-sm);
+    margin: 0;
+  }
+  
+  .footer-legal {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-legal a {
+    color: var(--color-primary-300);
+    font-size: var(--font-size-sm);
+  }
+  
+  .footer-legal a:hover {
+    color: var(--color-text-inverse);
+    text-decoration: none;
+  }
+</style>
