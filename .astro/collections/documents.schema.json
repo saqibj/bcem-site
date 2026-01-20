@@ -1,0 +1,80 @@
+{
+  "$ref": "#/definitions/documents",
+  "definitions": {
+    "documents": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Annual Report",
+            "Quarterly Report",
+            "Financial Statement",
+            "Corporate Notice",
+            "Shariah Compliance",
+            "Governance",
+            "Other"
+          ]
+        },
+        "year": {
+          "type": "number"
+        },
+        "quarter": {
+          "type": "string",
+          "enum": [
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4"
+          ]
+        },
+        "publishDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "fileUrl": {
+          "type": "string"
+        },
+        "fileSize": {
+          "type": "string"
+        },
+        "fileType": {
+          "type": "string",
+          "enum": [
+            "pdf",
+            "xlsx",
+            "docx"
+          ],
+          "default": "pdf"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "category",
+        "year",
+        "publishDate",
+        "fileUrl"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

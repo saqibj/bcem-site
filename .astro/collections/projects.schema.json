@@ -1,0 +1,124 @@
+{
+  "$ref": "#/definitions/projects",
+  "definitions": {
+    "projects": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "shortTitle": {
+          "type": "string"
+        },
+        "excerpt": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Wind",
+            "Solar",
+            "Hydro",
+            "Hybrid"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Operational",
+            "Under Construction",
+            "Planning",
+            "Completed"
+          ],
+          "default": "Operational"
+        },
+        "location": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "string"
+        },
+        "commissionDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "image": {
+          "type": "string"
+        },
+        "imageAlt": {
+          "type": "string"
+        },
+        "gallery": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string"
+              },
+              "alt": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "draft": {
+          "type": "boolean",
+          "default": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "excerpt",
+        "category",
+        "location",
+        "capacity"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
