@@ -1,22 +1,25 @@
 {
   "models": {
     "main": {
-      "provider": "anthropic",
-      "modelId": "claude-sonnet-4-20250514",
+      "provider": "ollama",
+      "modelId": "qwen2.5:7b",
       "maxTokens": 64000,
-      "temperature": 0.2
+      "temperature": 0.2,
+      "baseURL": "http://localhost:11434/api"
     },
     "research": {
-      "provider": "perplexity",
-      "modelId": "sonar",
+      "provider": "ollama",
+      "modelId": "qwen2.5:7b",
       "maxTokens": 8700,
-      "temperature": 0.1
+      "temperature": 0.1,
+      "baseURL": "http://localhost:11434/api"
     },
     "fallback": {
-      "provider": "anthropic",
-      "modelId": "claude-3-7-sonnet-20250219",
+      "provider": "ollama",
+      "modelId": "llama3.2:latest",
       "maxTokens": 120000,
-      "temperature": 0.2
+      "temperature": 0.2,
+      "baseURL": "http://localhost:11434/api"
     }
   },
   "global": {
@@ -31,7 +34,8 @@
     "responseLanguage": "English",
     "enableCodebaseAnalysis": true,
     "enableProxy": false,
-    "anonymousTelemetry": true
+    "anonymousTelemetry": true,
+    "userId": "1234567890"
   },
   "claudeCode": {},
   "codexCli": {},

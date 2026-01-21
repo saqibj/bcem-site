@@ -1,0 +1,61 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Resolve Decap CMS React 18 hydration errors",
+        "description": "Identify and fix any issues related to server-side rendering and client-side hydration in the Decap CMS React components.",
+        "details": "Review the error logs, update dependencies if necessary, and ensure proper SSR setup.",
+        "testStrategy": "Manually test component behavior on both initial render and subsequent page loads.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "in_progress",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Configure /admin route with Decap CMS",
+        "description": "Set up the necessary routes and configurations to allow access to the Decap CMS admin panel.",
+        "details": "Create an .astro file for the admin route, define any required environment variables, and configure Netlify settings if needed.",
+        "testStrategy": "Manually navigate to the /admin URL and ensure it redirects or prompts login as expected.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "in_progress",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Test CMS admin interface functionality",
+        "description": "Verify that all content and functionality in the Decap CMS admin panel work as expected.",
+        "details": "Create test entries for pages, collections, and any custom fields. Test CRUD operations and publish updates.",
+        "testStrategy": "Automatically run integration tests using a tool like Cypress or manually check each feature.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "not_started",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Create all 8 page templates",
+        "description": "Develop the remaining 7 pages using the established design and component framework.",
+        "details": "For each template, ensure it adheres to the design tokens and layout guidelines defined in BaseLayout.astro.",
+        "testStrategy": "Automatically run style checks and ensure responsiveness across various devices.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "not_started",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2026-01-21T10:11:41.126Z",
+      "updated": "2026-01-21T10:11:41.126Z",
+      "description": "Tasks for master context"
+    }
+  }
+}
