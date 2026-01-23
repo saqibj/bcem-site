@@ -1,5 +1,5 @@
 ---
-title: "Jhimpir Wind Power Project"
+title: "Jhimpir Power Ltd"
 shortTitle: "Jhimpir Wind"
 excerpt: "A flagship wind power installation in the Jhimpir wind corridor, contributing clean energy to Pakistan's national grid."
 category: "Wind"

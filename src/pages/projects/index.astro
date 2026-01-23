@@ -1,0 +1,183 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects', ({ data }) => data.draft !== true);
+
+const sortedProjects = projects.sort((a, b) => {
+  const aDate = a.data.commissionDate ? new Date(a.data.commissionDate).valueOf() : 0;
+  const bDate = b.data.commissionDate ? new Date(b.data.commissionDate).valueOf() : 0;
+  return bDate - aDate;
+});
+---
+
+<BaseLayout title="Projects">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-eyebrow">Portfolio</p>
+        <h1 class="page-title">Our Projects</h1>
+        <p class="page-subtitle">
+          Explore BCEM's portfolio of renewable energy installations across Pakistan,
+          delivering clean power and sustainable impact.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section projects-list">
+    <div class="container">
+      <div class="projects-grid">
+        {sortedProjects.length > 0 ? (
+          sortedProjects.map((project) => (
+            <article class="project-card card">
+              <div class="project-image">
+                <img
+                  src={project.data.image || '/images/project-placeholder.jpg'}
+                  alt={project.data.imageAlt || project.data.title}
+                  loading="lazy"
+                />
+                <span class="project-category">{project.data.category}</span>
+              </div>
+              <div class="card-body">
+                <div class="project-meta">
+                  <span class="project-status">{project.data.status}</span>
+                </div>
+                <h2 class="card-title">{project.data.title}</h2>
+                <p class="project-location">{project.data.location}</p>
+                <p class="project-capacity">{project.data.capacity} Capacity</p>
+                <p class="project-excerpt">{project.data.excerpt}</p>
+                <a href={`/projects/${project.slug}`} class="btn btn-outline btn-sm">
+                  View Details
+                </a>
+              </div>
+            </article>
+          ))
+        ) : (
+          <p class="text-center text-secondary">Projects coming soon.</p>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-20);
+  }
+
+  .page-hero-content {
+    max-width: var(--container-3xl);
+  }
+
+  .page-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-200);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-100);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
+  }
+
+  .project-category {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    padding: var(--space-1) var(--space-3);
+    background-color: var(--color-primary-600);
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .project-meta {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: var(--space-3);
+  }
+
+  .project-status {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-700);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .project-location,
+  .project-capacity {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .project-excerpt {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+</style>

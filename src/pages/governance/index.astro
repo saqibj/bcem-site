@@ -1,0 +1,359 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const profileUrl = 'https://www.burjmodaraba.com/corporate-governance/';
+const placeholderPhoto =
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%25' height='100%25' fill='%23e5eef8'/><circle cx='150' cy='120' r='60' fill='%23c1d3ea'/><rect x='70' y='190' width='160' height='80' rx='40' fill='%23c1d3ea'/></svg>";
+
+const boardMembers = [
+  { name: 'Muneer Kamal', role: 'Chairman' },
+  { name: 'Razi-Ur-Rahman Khan', role: 'Independent Director' },
+  { name: 'Rabiya Javeri', role: 'Independent Director' },
+  { name: 'Hasan Reza Ur Rahim', role: 'Independent Director' },
+  { name: 'Farrukh Zaman', role: 'Non-Executive Director' },
+  { name: 'Saad Uz Zaman', role: 'Executive Director' },
+  { name: 'Saleem uz Zaman', role: 'Executive Director' },
+  { name: 'Nabeel Malik', role: 'Chief Executive' },
+];
+
+const managementTeam = [
+  { name: 'Nabeel Malik', role: 'Chief Executive' },
+  { name: 'Talha Ameer', role: 'MD Investments' },
+  { name: 'Azam Farooq', role: 'Chief Financial Officer' },
+  { name: 'Wahab Ali', role: 'Technical Head' },
+];
+---
+
+<BaseLayout title="Governance">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-eyebrow">Governance</p>
+        <h1 class="page-title">Corporate Governance</h1>
+        <p class="page-subtitle">
+          BCEM is committed to transparent, accountable, and Shariah-compliant
+          governance that supports long-term value creation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section governance-overview">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Governance Framework</h2>
+        <p class="section-subtitle">
+          Oversight is anchored in board independence, strong controls, and a clear
+          commitment to stakeholder stewardship.
+        </p>
+      </div>
+
+      <div class="governance-grid">
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Board Oversight</h3>
+            <p class="card-text">
+              The Board provides strategic direction, monitors performance, and
+              ensures accountability through regular reviews and reporting.
+            </p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Shariah Supervision</h3>
+            <p class="card-text">
+              An independent Shariah Supervisory Board reviews investments and
+              operations to ensure full compliance with Islamic finance principles.
+            </p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Risk Management</h3>
+            <p class="card-text">
+              Comprehensive risk frameworks guide investment decisions, operational
+              controls, and portfolio monitoring.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section committees bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Board Committees</h2>
+        <p class="section-subtitle">
+          Specialized committees provide focused oversight across key areas.
+        </p>
+      </div>
+
+      <div class="committee-list">
+        <article class="committee-item">
+          <h3 class="committee-title">Audit & Risk Committee</h3>
+          <p class="committee-text">
+            Oversees financial reporting, internal controls, and enterprise risk
+            management.
+          </p>
+        </article>
+        <article class="committee-item">
+          <h3 class="committee-title">Investment Committee</h3>
+          <p class="committee-text">
+            Reviews project pipeline, capital allocation, and portfolio performance.
+          </p>
+        </article>
+        <article class="committee-item">
+          <h3 class="committee-title">Shariah Committee</h3>
+          <p class="committee-text">
+            Provides guidance and rulings to ensure ongoing compliance with Shariah
+            principles.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section board">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Board of Directors</h2>
+        <p class="section-subtitle">
+          The Board provides strategic leadership and ensures strong governance
+          across BCEM’s portfolio.
+        </p>
+      </div>
+
+      <div class="profile-grid">
+        {boardMembers.map((member) => (
+          <a class="profile-card" href={profileUrl} target="_blank" rel="noreferrer">
+            <img class="profile-photo" src={placeholderPhoto} alt={member.name} loading="lazy" />
+            <div class="profile-body">
+              <h3 class="profile-name">{member.name}</h3>
+              <p class="profile-role">{member.role}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section management bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Management Team</h2>
+        <p class="section-subtitle">
+          A dedicated leadership team drives execution, performance, and impact.
+        </p>
+      </div>
+
+      <div class="profile-grid">
+        {managementTeam.map((member) => (
+          <a class="profile-card" href={profileUrl} target="_blank" rel="noreferrer">
+            <img class="profile-photo" src={placeholderPhoto} alt={member.name} loading="lazy" />
+            <div class="profile-body">
+              <h3 class="profile-name">{member.name}</h3>
+              <p class="profile-role">{member.role}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section policies">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Policies & Practices</h2>
+        <p class="section-subtitle">
+          Our governance policies promote ethics, transparency, and responsible
+          stewardship.
+        </p>
+      </div>
+
+      <div class="policies-grid">
+        <div class="policy-card">
+          <h3 class="policy-title">Code of Conduct</h3>
+          <p class="policy-text">
+            We uphold integrity, accountability, and respect across all operations.
+          </p>
+        </div>
+        <div class="policy-card">
+          <h3 class="policy-title">Disclosure & Reporting</h3>
+          <p class="policy-text">
+            Timely, accurate reporting ensures investors and stakeholders stay
+            informed.
+          </p>
+        </div>
+        <div class="policy-card">
+          <h3 class="policy-title">ESG Stewardship</h3>
+          <p class="policy-text">
+            We embed environmental and social considerations into every investment
+            decision.
+          </p>
+        </div>
+        <div class="policy-card">
+          <h3 class="policy-title">Compliance & Controls</h3>
+          <p class="policy-text">
+            Robust compliance frameworks safeguard regulatory and Shariah alignment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-20);
+  }
+
+  .page-hero-content {
+    max-width: var(--container-3xl);
+  }
+
+  .page-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-200);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-100);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .governance-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .governance-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .committee-list {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .committee-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .committee-item {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .committee-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .committee-text {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .profile-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .profile-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .profile-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .profile-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .profile-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    background: var(--color-primary-100);
+  }
+
+  .profile-name {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-1);
+  }
+
+  .profile-role {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-600);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin: 0;
+  }
+
+  .policies-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .policies-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .policy-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .policy-title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+
+  .policy-text {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+</style>
