@@ -6,7 +6,7 @@ category: "Wind"
 status: "Operational"
 location: "Jhimpir, Sindh, Pakistan"
 capacity: "50 MW"
-commissionDate: 2022-06-15
+commissionDate: 2018-06-15
 featured: true
 image: "/images/projects/jhimpir-wind.jpg"
 imageAlt: "Wind turbines at the Jhimpir Wind Power Project"

@@ -19,24 +19,78 @@ const sortedNews = latestNews.sort((a, b) =>
 
 <BaseLayout title="Home">
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero-slider" aria-roledescription="carousel">
     <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          Powering Pakistan's
-          <span class="text-gradient">Sustainable Future</span>
-        </h1>
-        <p class="hero-subtitle">
-          Pakistan's first listed green energy fund, investing in renewable 
-          energy projects that deliver both financial returns and environmental impact.
-        </p>
-        <div class="hero-actions">
-          <a href="/projects" class="btn btn-primary btn-lg">Explore Projects</a>
-          <a href="/investor-relations" class="btn btn-outline btn-lg">Investor Relations</a>
-        </div>
-      </div>
     </div>
-    <div class="hero-bg" aria-hidden="true"></div>
+
+    <div class="slider-track" data-slider-track>
+      <article class="hero-slide is-active" data-slide>
+        <div class="hero-media">
+          <img src="/images/slider/01.jpg" alt="Wind turbines at Jhimpir" loading="lazy" />
+        </div>
+        <div class="hero-inner container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              Powering Pakistan's
+              <span class="text-gradient">Sustainable Future</span>
+            </h1>
+            <p class="hero-subtitle">
+              Pakistan's first listed green energy fund, investing in renewable
+              energy projects that deliver both financial returns and environmental impact.
+            </p>
+            <div class="hero-actions">
+              <a href="/projects" class="btn btn-primary btn-lg">Explore Projects</a>
+              <a href="/investor-relations" class="btn btn-outline btn-lg">Investor Relations</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="hero-slide" data-slide>
+        <div class="hero-media">
+          <img src="/images/slider/02.png" alt="Power Cement solar installation" loading="lazy" />
+        </div>
+        <div class="hero-inner container">
+          <div class="hero-content">
+            <h2 class="hero-title">
+              Building Trust Through
+              <span class="text-gradient">Responsible Governance</span>
+            </h2>
+            <p class="hero-subtitle">
+              Transparent reporting, strong oversight, and Shariah-compliant operations guide every
+              investment decision we make.
+            </p>
+            <div class="hero-actions">
+              <a href="/governance" class="btn btn-primary btn-lg">View Governance</a>
+              <a href="/investor-relations" class="btn btn-outline btn-lg">Investor Relations</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="hero-slide" data-slide>
+        <div class="hero-media">
+          <img src="/images/slider/03.jpg" alt="Solar panels under blue sky" loading="lazy" />
+        </div>
+        <div class="hero-inner container">
+          <div class="hero-content">
+            <h2 class="hero-title">
+              Accelerating the
+              <span class="text-gradient">Clean Energy Transition</span>
+            </h2>
+            <p class="hero-subtitle">
+              From solar and wind to hybrid solutions, BCEM delivers scalable projects that power
+              communities and industries across Pakistan.
+            </p>
+            <div class="hero-actions">
+              <a href="/projects" class="btn btn-primary btn-lg">Explore Projects</a>
+              <a href="/contact" class="btn btn-outline btn-lg">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
   </section>
 
   <!-- Value Proposition Section -->
@@ -233,20 +287,76 @@ const sortedNews = latestNews.sort((a, b) =>
   </section>
 </BaseLayout>
 
+<script>
+  const sliderTrack = document.querySelector<HTMLElement>('[data-slider-track]');
+  if (sliderTrack) {
+    const slides = Array.from(sliderTrack.querySelectorAll<HTMLElement>('[data-slide]'));
+    let currentIndex = 0;
+    let timerId: number | null = null;
+
+    const setActive = (index: number) => {
+      const nextIndex = (index + slides.length) % slides.length;
+      slides[currentIndex].classList.remove('is-active');
+      slides[nextIndex].classList.add('is-active');
+      currentIndex = nextIndex;
+    };
+
+    const startAuto = () => {
+      timerId = window.setInterval(() => setActive(currentIndex + 1), 6000);
+    };
+
+    const stopAuto = () => {
+      if (timerId !== null) {
+        window.clearInterval(timerId);
+        timerId = null;
+      }
+    };
+
+    sliderTrack.addEventListener('mouseenter', stopAuto);
+    sliderTrack.addEventListener('mouseleave', startAuto);
+    startAuto();
+  }
+</script>
+
 <style>
   /* Hero Section */
-  .hero {
+  .hero-slider {
     position: relative;
     padding-block: var(--space-24);
-    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
     color: var(--color-text-inverse);
     overflow: hidden;
+  }
+
+
+  .slider-track {
+    position: relative;
+    min-height: 360px;
+    width: 100%;
+  }
+
+  .hero-slide {
+    display: none;
+    position: relative;
+    min-height: 420px;
+    padding: var(--space-16) 0;
+    overflow: hidden;
+  }
+
+  .hero-slide.is-active {
+    display: block;
   }
   
   .hero-content {
     position: relative;
     z-index: 1;
     max-width: var(--container-3xl);
+    color: var(--color-text-inverse);
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
   }
   
   .hero-title {
@@ -295,26 +405,29 @@ const sortedNews = latestNews.sort((a, b) =>
     gap: var(--space-4);
   }
   
-  .hero .btn-outline {
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-slider .btn-outline {
     border-color: var(--color-primary-200);
     color: var(--color-text-inverse);
   }
   
-  .hero .btn-outline:hover {
+  .hero-slider .btn-outline:hover {
     background-color: var(--color-primary-200);
     color: var(--color-primary-900);
   }
-  
-  .hero-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 50%;
-    background: url('/images/hero-pattern.svg') no-repeat center right;
-    background-size: cover;
-    opacity: 0.1;
-  }
+
   
   /* Features Section */
   .features-grid {
