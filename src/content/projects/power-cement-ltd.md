@@ -1,7 +1,7 @@
 ---
 title: "Power Cement Ltd"
 shortTitle: "Power Cement"
-excerpt: "A waste heat recovery project supplying clean power to Power Cement Ltd, reducing reliance on the grid and cutting emissions."
+excerpt: "A solar energy project supplying clean power to Power Cement Ltd, reducing reliance on the grid and cutting emissions."
 category: "Solar"
 status: "Operational"
 location: "Nooriabad, Sindh, Pakistan"
@@ -29,7 +29,7 @@ This installation generates 7 MW of electricity from solar energy, providing sta
 
 ## Technical Specifications
 
-The system integrates heat recovery boilers and high-efficiency turbines designed for stable, continuous operation within the plant's process cycle.
+The system integrates 13,000 solar panels generating 540W each.
 
 ## Environmental Impact
 
