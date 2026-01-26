@@ -3,6 +3,8 @@
    BCEM Corporate Website Base Styles
    ========================================================================== */
 
+@import "tailwindcss";
+
 @import './reset.css';
 @import './tokens.css';
 
@@ -302,7 +304,7 @@ small {
 }
 
 .card-body {
-  padding: var(--space-6);
+  padding: var(--space-4);
 }
 
 .card-title {
@@ -323,7 +325,7 @@ small {
   text-align: center;
   max-width: var(--container-3xl);
   margin-inline: auto;
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-8);
 }
 
 .section-title {

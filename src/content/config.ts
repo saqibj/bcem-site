@@ -66,15 +66,16 @@ const documents = defineCollection({
   }),
 });
 
-// Team Members Collection (optional, for About page)
+// Team Members Collection (Governance)
 const team = defineCollection({
-  type: 'data',
+  type: 'content',
   schema: z.object({
     name: z.string(),
     role: z.string(),
-    department: z.enum(['Board of Directors', 'Management', 'Shariah Board']),
-    bio: z.string().optional(),
+    groups: z.array(z.enum(['board', 'management', 'shariah'])),
+    bio: z.string(),
     image: z.string().optional(),
+    linkedinUrl: z.string().url().optional(),
     order: z.number().default(0),
   }),
 });

@@ -1,46 +1,47 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { boardMembers } from '@/data/governanceProfiles';
+import { getCollection } from 'astro:content';
 
 const placeholderPhoto =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%25' height='100%25' fill='%23e5eef8'/><circle cx='200' cy='160' r='80' fill='%23c1d3ea'/><rect x='80' y='240' width='240' height='120' rx='60' fill='%23c1d3ea'/></svg>";
 
 export async function getStaticPaths() {
-  return boardMembers.map((member) => ({
-    params: { slug: member.slug },
-    props: { member },
-  }));
+  const teamMembers = await getCollection('team');
+  const boardMembers = teamMembers.filter((member) => member.data.groups.includes('board'));
+  return boardMembers.map((member) => ({ params: { slug: member.slug }, props: { member } }));
 }
 
 const { member } = Astro.props;
 ---
 
-<BaseLayout title={`${member.name} | Board of Directors`}>
+<BaseLayout title={`${member.data.name} | Board of Directors`}>
   <section class="profile-hero">
     <div class="container profile-hero-grid">
       <div class="profile-photo-wrap">
-        <img class="profile-photo" src={placeholderPhoto} alt={member.name} loading="lazy" />
+        <img
+          class="profile-photo"
+          src={member.data.image ?? placeholderPhoto}
+          alt={member.data.name}
+          loading="lazy"
+        />
       </div>
       <div class="profile-hero-content">
         <a class="back-link" href="/governance">Back to Governance</a>
         <p class="profile-eyebrow">Board of Directors</p>
-        <h1 class="profile-name">{member.name}</h1>
-        <p class="profile-role">{member.role}</p>
-        <p class="profile-summary">{member.summary}</p>
+        <h1 class="profile-name">{member.data.name}</h1>
+        <p class="profile-role">{member.data.role}</p>
+        <p class="profile-summary">{member.data.bio}</p>
+        {member.data.linkedinUrl ? (
+          <div class="profile-links">
+            <a class="profile-link" href={member.data.linkedinUrl} target="_blank" rel="noreferrer">
+              <img class="linkedin-icon" src="/images/linkedin.svg" alt="LinkedIn" loading="lazy" />
+            </a>
+          </div>
+        ) : null}
       </div>
     </div>
   </section>
 
-  <section class="section profile-details">
-    <div class="container">
-      <h2 class="section-title">Focus Areas</h2>
-      <ul class="focus-list">
-        {member.focus.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-    </div>
-  </section>
 </BaseLayout>
 
 <style>
@@ -107,18 +108,25 @@ const { member } = Astro.props;
     max-width: var(--container-2xl);
   }
 
-  .focus-list {
-    list-style: none;
-    padding: 0;
-    margin: var(--space-6) 0 0;
-    display: grid;
+  .profile-links {
+    margin-top: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-3);
   }
 
-  .focus-list li {
-    padding: var(--space-3) var(--space-4);
-    border-radius: var(--radius-lg);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+  .profile-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-600);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
   }
+
+  .linkedin-icon {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+  }
+
 </style>

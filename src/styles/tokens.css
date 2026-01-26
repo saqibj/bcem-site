@@ -130,8 +130,8 @@
   --space-32: 8rem;     /* 128px */
   
   /* Section Spacing */
-  --section-padding-y: var(--space-16);
-  --section-padding-y-lg: var(--space-24);
+  --section-padding-y: var(--space-12);
+  --section-padding-y-lg: var(--space-16);
   
   /* -------------------------------------------------------------------------
      LAYOUT TOKENS

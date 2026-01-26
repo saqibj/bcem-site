@@ -203,7 +203,9 @@ declare module 'astro:content' {
 }>;
 "team": Record<string, {
   id: string;
-  body?: string;
+  render(): Render[".md"];
+  slug: string;
+  body: string;
   collection: "team";
   data: InferEntrySchema<"team">;
   rendered?: RenderedContent;

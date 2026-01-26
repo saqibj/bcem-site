@@ -1,9 +1,21 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { boardMembers, managementTeam } from '@/data/governanceProfiles';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 const placeholderPhoto =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><rect width='100%25' height='100%25' fill='%23e5eef8'/><circle cx='150' cy='120' r='60' fill='%23c1d3ea'/><rect x='70' y='190' width='160' height='80' rx='40' fill='%23c1d3ea'/></svg>";
+
+const teamMembers = await getCollection('team');
+type TeamMember = CollectionEntry<'team'>;
+const sortByOrder = (a: TeamMember, b: TeamMember) =>
+  a.data.order - b.data.order || a.data.name.localeCompare(b.data.name);
+const boardMembers = teamMembers
+  .filter((member) => member.data.groups.includes('board'))
+  .sort(sortByOrder);
+const managementTeam = teamMembers
+  .filter((member) => member.data.groups.includes('management'))
+  .sort(sortByOrder);
 ---
 
 <BaseLayout title="Governance">
@@ -75,10 +87,15 @@ const placeholderPhoto =
       <div class="profile-grid">
         {boardMembers.map((member) => (
           <a class="profile-card" href={`/governance/board/${member.slug}`}>
-            <img class="profile-photo" src={placeholderPhoto} alt={member.name} loading="lazy" />
+            <img
+              class="profile-photo"
+              src={member.data.image ?? placeholderPhoto}
+              alt={member.data.name}
+              loading="lazy"
+            />
             <div class="profile-body">
-              <h3 class="profile-name">{member.name}</h3>
-              <p class="profile-role">{member.role}</p>
+              <h3 class="profile-name">{member.data.name}</h3>
+              <p class="profile-role">{member.data.role}</p>
             </div>
           </a>
         ))}
@@ -132,10 +149,15 @@ const placeholderPhoto =
       <div class="profile-grid">
         {managementTeam.map((member) => (
           <a class="profile-card" href={`/governance/management/${member.slug}`}>
-            <img class="profile-photo" src={placeholderPhoto} alt={member.name} loading="lazy" />
+            <img
+              class="profile-photo"
+              src={member.data.image ?? placeholderPhoto}
+              alt={member.data.name}
+              loading="lazy"
+            />
             <div class="profile-body">
-              <h3 class="profile-name">{member.name}</h3>
-              <p class="profile-role">{member.role}</p>
+              <h3 class="profile-name">{member.data.name}</h3>
+              <p class="profile-role">{member.data.role}</p>
             </div>
           </a>
         ))}

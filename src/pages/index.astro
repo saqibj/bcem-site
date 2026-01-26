@@ -287,42 +287,12 @@ const sortedNews = latestNews.sort((a, b) =>
   </section>
 </BaseLayout>
 
-<script>
-  const sliderTrack = document.querySelector<HTMLElement>('[data-slider-track]');
-  if (sliderTrack) {
-    const slides = Array.from(sliderTrack.querySelectorAll<HTMLElement>('[data-slide]'));
-    let currentIndex = 0;
-    let timerId: number | null = null;
-
-    const setActive = (index: number) => {
-      const nextIndex = (index + slides.length) % slides.length;
-      slides[currentIndex].classList.remove('is-active');
-      slides[nextIndex].classList.add('is-active');
-      currentIndex = nextIndex;
-    };
-
-    const startAuto = () => {
-      timerId = window.setInterval(() => setActive(currentIndex + 1), 6000);
-    };
-
-    const stopAuto = () => {
-      if (timerId !== null) {
-        window.clearInterval(timerId);
-        timerId = null;
-      }
-    };
-
-    sliderTrack.addEventListener('mouseenter', stopAuto);
-    sliderTrack.addEventListener('mouseleave', startAuto);
-    startAuto();
-  }
-</script>
-
 <style>
   /* Hero Section */
   .hero-slider {
     position: relative;
-    padding-block: var(--space-24);
+    padding-top: 0;
+    padding-bottom: var(--space-12);
     color: var(--color-text-inverse);
     overflow: hidden;
   }
@@ -332,18 +302,57 @@ const sortedNews = latestNews.sort((a, b) =>
     position: relative;
     min-height: 360px;
     width: 100%;
+    display: flex;
+    animation: hero-slider 18s infinite;
+  }
+
+  .hero-slider:hover .slider-track {
+    animation-play-state: paused;
   }
 
   .hero-slide {
-    display: none;
+    display: block;
+    flex: 0 0 100%;
     position: relative;
-    min-height: 420px;
+    min-height: 520px;
     padding: var(--space-16) 0;
     overflow: hidden;
   }
 
-  .hero-slide.is-active {
-    display: block;
+  @media (min-width: 768px) {
+    .hero-slide {
+      min-height: 620px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-slide {
+      min-height: 700px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slider-track {
+      animation: none;
+    }
+  }
+
+  @keyframes hero-slider {
+    0%,
+    27% {
+      transform: translateX(0);
+    }
+    33%,
+    60% {
+      transform: translateX(-100%);
+    }
+    66%,
+    93% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
   }
   
   .hero-content {

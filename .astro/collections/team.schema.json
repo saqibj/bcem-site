@@ -10,19 +10,26 @@
         "role": {
           "type": "string"
         },
-        "department": {
-          "type": "string",
-          "enum": [
-            "Board of Directors",
-            "Management",
-            "Shariah Board"
-          ]
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "board",
+              "management",
+              "shariah"
+            ]
+          }
         },
         "bio": {
           "type": "string"
         },
         "image": {
           "type": "string"
+        },
+        "linkedinUrl": {
+          "type": "string",
+          "format": "uri"
         },
         "order": {
           "type": "number",
@@ -35,7 +42,8 @@
       "required": [
         "name",
         "role",
-        "department"
+        "groups",
+        "bio"
       ],
       "additionalProperties": false
     }
