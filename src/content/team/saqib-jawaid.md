@@ -1,6 +1,6 @@
 ---
-name: Saqib Jawaid
-role: Head of IT
+name: "Saqib Jawaid"
+role: "Head of IT"
 groups:
   - management
 bio: Saqib Jawaid is a highly analytical IT leader with over two decades of
@@ -11,7 +11,7 @@ bio: Saqib Jawaid is a highly analytical IT leader with over two decades of
   financing platform. Previously, he held senior positions at Burj Capital and
   Circles Consulting, where he led strategic technology and consulting
   operations.
-image: /images/teams/saqib-jawaid-1-.jpg
-linkedinUrl: www.linkedin.com/in/saqibj/
+image: "/images/teams/saqib-jawaid-1-.jpg"
+linkedinUrl: "https://www.linkedin.com/in/saqibj/"
 order: 12
 ---
