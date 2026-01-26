@@ -154,14 +154,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       
       <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <p class="footer-copyright">
-          &copy; {new Date().getFullYear()} Burj Clean Energy Modaraba. All rights reserved.
-        </p>
-        <ul class="footer-legal" role="list">
-          <li><a href="/privacy-policy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Use</a></li>
-          <li><a href="/disclaimer">Disclaimer</a></li>
-        </ul>
+        <div class="footer-banners">
+          <a
+            class="footer-banner"
+            href="https://secp.gov.pk"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <img
+              src="/images/banners/secp-banner.jpg"
+              alt="Securities & Exchange Commission of Pakistan complaint portal"
+              loading="lazy"
+            />
+          </a>
+        </div>
+        <div class="footer-meta">
+          <p class="footer-copyright">
+            &copy; {new Date().getFullYear()} Burj Clean Energy Modaraba. All rights reserved.
+          </p>
+          <ul class="footer-legal" role="list">
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+            <li><a href="/disclaimer">Disclaimer</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </footer>
@@ -391,19 +407,37 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     flex-direction: column;
     gap: var(--space-4);
   }
+
+  .footer-banners {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  .footer-banner img {
+    display: block;
+    max-width: 100%;
+    height: 80px;
+    width: auto;
+  }
   
-  @media (min-width: 768px) {
-    .footer-bottom {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .footer-meta {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-6);
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: nowrap;
   }
   
   .footer-copyright {
     color: var(--color-primary-300);
     font-size: var(--font-size-sm);
     margin: 0;
+    white-space: nowrap;
   }
   
   .footer-legal {
@@ -412,6 +446,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     list-style: none;
     padding: 0;
     margin: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
   }
   
   .footer-legal a {

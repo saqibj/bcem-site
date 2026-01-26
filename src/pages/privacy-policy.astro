@@ -1,0 +1,244 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy Policy">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-eyebrow">Privacy Policy</p>
+        <h1 class="page-title">How We Protect Your Information</h1>
+        <p class="page-subtitle">
+          This policy explains how Burj Clean Energy Modaraba collects, uses, and
+          safeguards personal information provided through this website.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section legal-content">
+    <div class="container">
+      <div class="legal-card">
+        <h2>Burj Clean Energy Modaraba</h2>
+        <hr class="divider" />
+
+        <h3>Overview</h3>
+        <p>
+          Burj Clean Energy Modaraba respects the privacy of its investors,
+          stakeholders, and website visitors. This Privacy Policy describes the
+          types of information we may collect, how we use it, and the choices
+          available to you. By using this website, you acknowledge and agree to
+          the practices described below.
+        </p>
+
+        <h3>Information We Collect</h3>
+        <p>We may collect the following categories of information:</p>
+        <ul>
+          <li>
+            Personal details you voluntarily provide, such as your name, email
+            address, phone number, company, and job title when you contact us or
+            request information.
+          </li>
+          <li>
+            Communication records, including emails or inquiry submissions you
+            send to us.
+          </li>
+          <li>
+            Technical information such as IP address, browser type, device
+            identifiers, referring pages, and usage patterns collected through
+            cookies or similar technologies.
+          </li>
+        </ul>
+
+        <h3>How We Use Information</h3>
+        <p>We use collected information to:</p>
+        <ul>
+          <li>Respond to inquiries and provide requested information.</li>
+          <li>Improve website functionality, content, and user experience.</li>
+          <li>
+            Share updates about Burj Clean Energy Modaraba, projects, and
+            investor communications when relevant.
+          </li>
+          <li>
+            Comply with legal, regulatory, and internal policy requirements.
+          </li>
+        </ul>
+
+        <h3>Cookies and Analytics</h3>
+        <p>
+          We may use cookies or similar technologies to understand website usage
+          and improve performance. You can manage or disable cookies in your
+          browser settings. Disabling cookies may limit some website features.
+        </p>
+
+        <h3>Information Sharing</h3>
+        <p>
+          We do not sell or rent personal information. We may share information
+          with trusted service providers who support our operations, such as IT
+          hosting, analytics, legal, or compliance partners. These providers are
+          required to protect the information and use it only for authorized
+          purposes. We may also disclose information if required by law or
+          regulatory authorities.
+        </p>
+
+        <h3>Data Security</h3>
+        <p>
+          We use reasonable administrative, technical, and physical safeguards
+          to protect personal information against unauthorized access, loss, or
+          misuse. However, no system can guarantee absolute security, and we
+          cannot warrant the security of information transmitted over the
+          internet.
+        </p>
+
+        <h3>Data Retention</h3>
+        <p>
+          We retain personal information only for as long as necessary to
+          fulfill the purposes outlined in this policy or to meet legal and
+          regulatory obligations.
+        </p>
+
+        <h3>Your Choices</h3>
+        <p>
+          You may request access, correction, or deletion of your personal
+          information by contacting us using the details below. We will respond
+          in accordance with applicable laws and regulatory obligations.
+        </p>
+
+        <h3>Third-Party Links</h3>
+        <p>
+          This website may include links to external websites. Burj Clean Energy
+          Modaraba is not responsible for the privacy practices or content of
+          those websites. Please review the privacy policies of any third-party
+          sites you visit.
+        </p>
+
+        <h3>Policy Updates</h3>
+        <p>
+          We may update this Privacy Policy from time to time. Changes will be
+          posted on this page with a revised "Last Updated" date. Continued use
+          of the website after updates indicates acceptance of the revised
+          policy.
+        </p>
+
+        <h3>Governing Law</h3>
+        <p>
+          This Privacy Policy is governed by the laws of Pakistan and applicable
+          regulations, including SECP requirements for Modarabas.
+        </p>
+
+        <h3>Contact Information</h3>
+        <p>
+          If you have questions about this Privacy Policy or wish to exercise
+          your rights, please contact:
+        </p>
+        <div class="contact-block">
+          <strong>Burj Clean Energy Modaraba</strong>
+          <span>Head Office Address</span>
+          <span>Email: enquiry@burjcleanenergy.com</span>
+          <span>Phone: +92 21 3524-6300</span>
+        </div>
+
+        <hr class="divider" />
+
+        <p class="last-updated"><strong>Last Updated:</strong> January 2026</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-20);
+  }
+
+  .page-hero-content {
+    max-width: var(--container-3xl);
+  }
+
+  .page-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-200);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-100);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .legal-content {
+    padding-block: var(--space-16);
+  }
+
+  .legal-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-10);
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .legal-card h2 {
+    margin: 0;
+    font-size: var(--font-size-2xl);
+  }
+
+  .legal-card h3 {
+    margin: 0;
+    font-size: var(--font-size-lg);
+  }
+
+  .legal-card p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .legal-card ul {
+    margin: 0;
+    padding-left: var(--space-6);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 0;
+  }
+
+  .contact-block {
+    display: grid;
+    gap: var(--space-1);
+    color: var(--color-text-secondary);
+  }
+
+  .contact-block strong {
+    color: var(--color-text-primary);
+  }
+
+  .last-updated {
+    margin: 0;
+  }
+</style>

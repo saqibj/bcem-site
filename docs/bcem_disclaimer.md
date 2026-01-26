@@ -81,8 +81,8 @@ For questions, concerns, or complaints regarding this website or the information
 
 **Burj Clean Energy Modaraba**  
 Head Office Address  
-Email: info@burjcleanenergy.com  
-Phone: [Contact Number]
+Email: enquiry@burjcleanenergy.com  
+Phone: +92 21 3524-6300
 
 ---
 

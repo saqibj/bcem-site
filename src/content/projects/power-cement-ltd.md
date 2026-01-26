@@ -13,6 +13,8 @@ imageAlt: "Solar farm at Power Cement Ltd"
 stats:
   - label: "Installed Capacity"
     value: "7 MW"
+  - label: "Number of Panels"
+    value: "13,000"
   - label: "Annual Generation"
     value: "55 GWh"
   - label: "CO₂ Offset"
