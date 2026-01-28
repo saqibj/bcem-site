@@ -1,0 +1,12 @@
+{
+  "name": "bcem-linkedin-import",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "import": "node import-linkedin.js"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  }
+}

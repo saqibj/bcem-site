@@ -1,0 +1,162 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news', ({ data }) => data.draft !== true);
+  return news.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+---
+
+<BaseLayout title={article.data.title}>
+  <section class="article-hero">
+    <div class="container">
+      <div class="article-hero-content">
+        <a class="back-link" href="/news">Back to News</a>
+        <span class="article-category">{article.data.category}</span>
+        <h1 class="article-title">{article.data.title}</h1>
+        <p class="article-subtitle">{article.data.excerpt}</p>
+        <div class="article-meta">
+          <time datetime={article.data.publishDate.toISOString()}>
+            {article.data.publishDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+          {article.data.sourceUrl && (
+            <a href={article.data.sourceUrl} target="_blank" rel="noreferrer noopener">
+              View on LinkedIn
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section article-body">
+    <div class="container article-layout">
+      <article class="article-content">
+        {article.data.image && (
+          <div class="article-image">
+            <img
+              src={article.data.image}
+              alt={article.data.imageAlt || article.data.title}
+              loading="lazy"
+            />
+          </div>
+        )}
+        <Content />
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .article-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-20);
+  }
+
+  .article-hero-content {
+    max-width: var(--container-3xl);
+  }
+
+  .back-link {
+    display: inline-flex;
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-100);
+    text-decoration: none;
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link:hover {
+    color: var(--color-text-inverse);
+  }
+
+  .article-category {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.12);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-4);
+  }
+
+  .article-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .article-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .article-subtitle {
+    color: var(--color-primary-100);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-200);
+  }
+
+  .article-meta a {
+    color: var(--color-text-inverse);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .article-meta a:hover {
+    text-decoration: underline;
+  }
+
+  .article-image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-6);
+  }
+
+  .article-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .article-layout {
+    display: grid;
+  }
+
+  .article-content :global(p) {
+    color: var(--color-text-secondary);
+  }
+
+  .article-content :global(h2) {
+    margin-top: var(--space-8);
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-left: var(--space-5);
+    color: var(--color-text-secondary);
+  }
+</style>

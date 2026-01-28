@@ -6,34 +6,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <section class="page-hero">
     <div class="container">
       <div class="page-hero-content">
-        <p class="page-eyebrow">Contact Us</p>
-        <h1 class="page-title">Your Gateway to Clean Energy Solutions</h1>
-        <p class="page-subtitle">Our representative will reach out to you.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section contact-highlights">
-    <div class="container">
-      <div class="contact-highlights-grid">
-        <article class="card">
-          <div class="card-body">
-            <p class="contact-tag">Have a Project?</p>
-            <p class="contact-link">enquiry@burjmodaraba.com</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-body">
-            <p class="contact-tag">Want to Work With Us?</p>
-            <p class="contact-link">Send Brief</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-body">
-            <p class="contact-tag">See What We Do!</p>
-            <p class="contact-link">Our Services</p>
-          </div>
-        </article>
+        <p class="page-eyebrow">Contact</p>
+        <h1 class="page-title">Contact Us</h1>
+        <p class="page-subtitle">
+          Your gateway to clean energy solutions. Our representative will reach out to you.
+        </p>
       </div>
     </div>
   </section>
@@ -41,30 +18,50 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <section class="section contact-details bg-alt">
     <div class="container">
       <div class="contact-details-grid">
-        <article class="card">
-          <div class="card-body">
-            <h2 class="card-title">Get in Touch</h2>
-            <p class="card-text">
-              Produce your own clean energy with Burj Clean Energy Modaraba.
-            </p>
-            <dl class="contact-list">
-              <div>
-                <dt>Phone</dt>
-                <dd>
-                  <a href="tel:+922135246400">+92 21 3524 6400</a>
-                </dd>
-              </div>
-              <div>
-                <dt>Email</dt>
-                <dd>
-                  <a href="mailto:enquiry@burjmodaraba.com">enquiry@burjmodaraba.com</a>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </article>
+        <div class="contact-info-column">
+          <article class="card">
+            <div class="card-body">
+              <h2 class="card-title">Get in Touch</h2>
+              <p class="card-text">
+                Produce your own clean energy with Burj Clean Energy Modaraba.
+              </p>
+              <dl class="contact-list">
+                <div>
+                  <dt>Phone</dt>
+                  <dd>
+                    <a href="tel:+922135246400">+92 21 3524 6400</a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Email</dt>
+                  <dd>
+                    <a href="mailto:enquiry@burjmodaraba.com">enquiry@burjmodaraba.com</a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
 
-        <article class="card">
+          <article class="card">
+            <div class="card-body">
+              <h2 class="card-title">Find Us</h2>
+              <p class="card-text">
+                Power your home and business with Burj Clean Energy Modaraba.
+              </p>
+              <address class="contact-address">
+                Burj Clean Energy Modaraba
+                <br />
+                Office # 202, 1st Floor,
+                <br />
+                11-C, Al-Murtaza Commercial Lane 2,
+                <br />
+                DHA Phase VIII , Karachi
+              </address>
+            </div>
+          </article>
+        </div>
+
+        <article class="card contact-form-card">
           <div class="card-body">
             <h2 class="card-title">Send us a message</h2>
             <p class="card-text">
@@ -114,68 +111,33 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-body">
-            <h2 class="card-title">Find Us</h2>
-            <p class="card-text">
-              Power your home and business with Burj Clean Energy Modaraba.
-            </p>
-            <address class="contact-address">
-              Burj Clean Energy Modaraba
-              <br />
-            Office # 202, 1st Floor,
-            <br />
-            11-C, Al-Murtaza Commercial Lane 2,
-            <br />
-            DHA Phase VIII , Karachi
-            </address>
-          </div>
-        </article>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .contact-highlights-grid {
-    display: grid;
-    gap: var(--space-6);
-  }
-
   .contact-details-grid {
     display: grid;
     gap: var(--space-6);
   }
 
-  @media (min-width: 768px) {
-    .contact-highlights-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  .contact-info-column {
+    display: grid;
+    gap: var(--space-6);
+  }
 
+  @media (min-width: 768px) {
     .contact-details-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1.3fr;
+      align-items: start;
     }
   }
 
   @media (min-width: 1024px) {
     .contact-details-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1.6fr;
     }
-  }
-
-  .contact-tag {
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-wide);
-    font-size: var(--font-size-xs);
-    color: var(--color-text-muted);
-    margin: 0 0 var(--space-2);
-  }
-
-  .contact-link {
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-primary-700);
-    margin: 0;
   }
 
   .contact-list {
@@ -235,5 +197,42 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     outline: 2px solid transparent;
     box-shadow: 0 0 0 2px var(--color-primary-600);
     border-color: var(--color-primary-600);
+  }
+
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-20);
+  }
+
+  .page-hero-content {
+    max-width: var(--container-3xl);
+  }
+
+  .page-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-200);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-100);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
   }
 </style>

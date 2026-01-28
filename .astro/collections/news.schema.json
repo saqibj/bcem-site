@@ -26,6 +26,22 @@
             }
           ]
         },
+        "pubDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
         "author": {
           "type": "string"
         },
@@ -35,7 +51,8 @@
             "News",
             "Press Release",
             "Announcement",
-            "Media Coverage"
+            "Media Coverage",
+            "media"
           ],
           "default": "News"
         },
@@ -48,6 +65,16 @@
         },
         "imageAlt": {
           "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri"
         },
         "draft": {
           "type": "boolean",

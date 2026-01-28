@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "public/images/teams"
+public_folder: "/images/teams"
+
+collections:
+  - name: "team"
+    label: "Team"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - label: "Groups"
+        name: "groups"
+        widget: "list"
+        field:
+          label: "Group"
+          name: "group"
+          widget: "select"
+          options: ["board", "management", "shariah"]
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "LinkedIn URL", name: "linkedinUrl", widget: "string", required: false }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 0 }

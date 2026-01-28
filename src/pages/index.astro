@@ -242,6 +242,15 @@ const sortedNews = latestNews.sort((a, b) =>
         {sortedNews.length > 0 ? (
           sortedNews.map((article) => (
             <article class="news-card card">
+              {article.data.image && (
+                <div class="news-image">
+                  <img
+                    src={article.data.image}
+                    alt={article.data.imageAlt || article.data.title}
+                    loading="lazy"
+                  />
+                </div>
+              )}
               <div class="card-body">
                 <span class="news-category">{article.data.category}</span>
                 <h3 class="card-title">
@@ -626,6 +635,18 @@ const sortedNews = latestNews.sort((a, b) =>
     color: var(--color-primary-600);
   }
   
+  .news-image {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .news-date {
     display: block;
     font-size: var(--font-size-sm);
