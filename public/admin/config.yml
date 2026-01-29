@@ -29,3 +29,22 @@ collections:
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "LinkedIn URL", name: "linkedinUrl", widget: "string", required: false }
       - { label: "Order", name: "order", widget: "number", value_type: "int", default: 0 }
+
+  - name: "news"
+    label: "News"
+    folder: "src/content/news"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Publish Date", name: "publishDate", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["News", "Press Release", "Announcement", "Media Coverage"], default: "News" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Hide from site", name: "draft", widget: "boolean", default: false }
+      - { label: "Image", name: "image", widget: "image", required: false, media_folder: "/public/images/news", public_folder: "/images/news" }
+      - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+      - { label: "Source", name: "source", widget: "string", required: false }
+      - { label: "Source URL", name: "sourceUrl", widget: "string", required: false }
