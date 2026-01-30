@@ -1,0 +1,139 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sitemap">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-eyebrow">Sitemap</p>
+        <h1 class="page-title">Explore Burj Clean Energy Modaraba</h1>
+        <p class="page-subtitle">
+          Browse key pages, governance information, and investor resources.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="sitemap-grid">
+        <div class="sitemap-card">
+          <h2 class="sitemap-title">Company</h2>
+          <ul class="sitemap-list" role="list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/news">News</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap-card">
+          <h2 class="sitemap-title">Governance</h2>
+          <ul class="sitemap-list" role="list">
+            <li><a href="/governance">Governance Overview</a></li>
+            <li><a href="/governance/board">Board of Directors</a></li>
+            <li><a href="/governance/management">Management Team</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap-card">
+          <h2 class="sitemap-title">Investor Resources</h2>
+          <ul class="sitemap-list" role="list">
+            <li><a href="/investor-relations">Investor Relations</a></li>
+            <li><a href="/investor-relations#financials">Financial Reports</a></li>
+            <li><a href="/investor-relations#notices">Corporate Notices</a></li>
+            <li><a href="/news">Latest News</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap-card">
+          <h2 class="sitemap-title">Legal</h2>
+          <ul class="sitemap-list" role="list">
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Use</a></li>
+            <li><a href="/disclaimer">Disclaimer</a></li>
+            <li><a href="/sitemap-index.xml">XML Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-16);
+  }
+
+  .page-hero-content {
+    max-width: var(--container-3xl);
+  }
+
+  .page-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-200);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-100);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .sitemap-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .sitemap-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .sitemap-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    background: var(--color-surface);
+  }
+
+  .sitemap-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .sitemap-list {
+    display: grid;
+    gap: var(--space-3);
+    color: var(--color-text-secondary);
+  }
+
+  .sitemap-list a {
+    color: inherit;
+  }
+
+  .sitemap-list a:hover {
+    color: var(--color-primary-600);
+  }
+</style>
