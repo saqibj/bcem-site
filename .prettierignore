@@ -1,0 +1,15 @@
+dist/
+.astro/
+.cursor/
+.taskmaster/
+docs/
+public/admin/
+README.md
+README-LINKEDIN-IMPORT.md
+DEPLOYMENT-GUIDE.md
+astro.config.mjs
+scripts/import-linkedin.js
+src/styles/global.css
+src/styles/reset.css
+src/styles/tokens.css
+src/content/team/map-order-13-name-syed-azan-bukhari-groups-list-management-role-vp-investments-and-projects-image-images-teams-azlan-profile-jpg-bio-test.md
