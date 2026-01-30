@@ -15,6 +15,15 @@ atAGlance:
     value: "Electrostatic, encapsulated capacitor storage (non-chemical)."
   - label: "Module"
     value: "8 kWh, 48 V (voltage range 44-55 Vdc)."
+techContext:
+  - title: "Enercap Storage Technology"
+    description: "Electrostatic storage offers long life, fast charging, non-degrading performance, and safe, recyclable, and biodegradable materials."
+  - title: "Not a Chemical Battery"
+    description: "Encapsulated capacitor cells are distinct from lithium-ion, LTO, or hybrid battery systems."
+  - title: "Supercapacitor Control"
+    description: "Algorithm-based control electronics manage active balancing in series and parallel configurations, deliver a flat discharge curve, and regulate self-discharge."
+  - title: "Beyond Supercaps"
+    description: "Designed for energy-intensive telecom applications that require dependable, long-duration storage."
 benefits:
   - "Degradation-free cycling for critical telecom uptime."
   - "High-rate charge and discharge capability."

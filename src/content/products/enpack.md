@@ -15,6 +15,15 @@ atAGlance:
     value: "Containerized electrostatic storage platform."
   - label: "Form factor"
     value: "Available in 10 ft, 20 ft, and 40 ft containers."
+techContext:
+  - title: "Enercap Storage Technology"
+    description: "Electrostatic storage offers long life, fast charging, non-degrading performance, and safe, recyclable, and biodegradable materials."
+  - title: "Not a Chemical Battery"
+    description: "Encapsulated capacitor cells are distinct from lithium-ion, LTO, or hybrid battery systems."
+  - title: "Supercapacitor Control"
+    description: "Algorithm-based control electronics manage active balancing in series and parallel configurations, deliver a flat discharge curve, and regulate self-discharge."
+  - title: "Beyond Supercaps"
+    description: "Designed for grid services, renewable stability, and off-grid charging where sustained energy delivery is essential."
 benefits:
   - "Supports grid services and renewable integration."
   - "Containerized delivery for rapid deployment."

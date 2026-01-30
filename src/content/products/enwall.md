@@ -15,6 +15,15 @@ atAGlance:
     value: "Electrostatic storage with integrated power electronics."
   - label: "Module options"
     value: "8 kWh and 16 kWh options (model dependent)."
+techContext:
+  - title: "Enercap Storage Technology"
+    description: "Electrostatic storage offers long life, fast charging, non-degrading performance, and safe, recyclable, and biodegradable materials."
+  - title: "Not a Chemical Battery"
+    description: "Encapsulated capacitor cells are distinct from lithium-ion, LTO, or hybrid battery systems."
+  - title: "Supercapacitor Control"
+    description: "Algorithm-based control electronics manage active balancing in series and parallel configurations, deliver a flat discharge curve, and regulate self-discharge."
+  - title: "Beyond Supercaps"
+    description: "Designed for residential backup and light commercial resiliency needs."
 benefits:
   - "Integrated system simplifies installation and operation."
   - "Supports on-grid, off-grid, and UPS operating modes."

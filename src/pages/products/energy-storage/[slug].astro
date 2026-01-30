@@ -61,6 +61,32 @@ const nextProduct =
     </div>
   </section>
 
+  {product.data.techContext && product.data.techContext.length > 0 && (
+    <section class="section bg-alt">
+      <div class="container">
+        <div class="section-header section-header-left">
+          <h2 class="section-title">Technology context</h2>
+          <p class="section-subtitle">
+            How Enercap electrostatic storage supports energy-intensive applications.
+          </p>
+        </div>
+        <div class="feature-grid">
+          {product.data.techContext.map((block) => (
+            <div class="card feature-card">
+              <div class="card-body">
+                <h3 class="card-title">{block.title}</h3>
+                <p class="card-text">{block.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <a class="tech-link" href="/products/#energy-storage">
+          Learn more about energy storage as a service
+        </a>
+      </div>
+    </section>
+  )}
+
   <section class="section bg-alt">
     <div class="container">
       <div class="section-header section-header-left">
@@ -302,6 +328,24 @@ const nextProduct =
     font-size: var(--font-size-base);
     color: var(--color-text-primary);
     margin: 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .tech-link {
+    display: inline-flex;
+    margin-top: var(--space-4);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
   }
 
   .feature-list {

@@ -15,6 +15,15 @@ atAGlance:
     value: "Electrostatic, non-chemical storage platform."
   - label: "Variants"
     value: "12V and 24V options with 500 Wh and 1.2 kWh 12V modules."
+techContext:
+  - title: "Enercap Storage Technology"
+    description: "Electrostatic storage offers long life, fast charging, non-degrading performance, and safe, recyclable, and biodegradable materials."
+  - title: "Not a Chemical Battery"
+    description: "Encapsulated capacitor cells are distinct from lithium-ion, LTO, or hybrid battery systems."
+  - title: "Supercapacitor Control"
+    description: "Algorithm-based control electronics manage active balancing in series and parallel configurations, deliver a flat discharge curve, and regulate self-discharge."
+  - title: "Beyond Supercaps"
+    description: "Designed for low-voltage energy storage and reliable backup across 12V and 24V systems."
 benefits:
   - "Supports full depth of discharge for maximum usable energy."
   - "High efficiency with long cycle life (reported)."
