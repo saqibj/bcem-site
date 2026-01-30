@@ -2,16 +2,26 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Products">
+<BaseLayout
+  title="Products"
+  description="Shariah-compliant financing, energy storage, and residential solutions supporting Pakistan’s transition to renewable energy."
+>
   <section class="page-hero">
     <div class="container">
       <div class="page-hero-content">
         <p class="page-eyebrow">Products</p>
         <h1 class="page-title">Clean Energy Solutions for Every Scale</h1>
-        <p class="page-subtitle">
-          Shariah-compliant renewable energy and storage solutions designed for commercial,
-          industrial, and residential partners across Pakistan.
-        </p>
+        <div class="page-subtitle-group">
+          <p class="page-subtitle">
+            Shariah-compliant renewable energy and storage solutions designed for commercial,
+            industrial, and residential partners across Pakistan.
+          </p>
+          <p class="page-subtitle">
+            Backed by an experienced team and proven track record, we support Pakistan’s
+            transition to renewable energy with tailored financing and technology-forward
+            infrastructure.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -31,13 +41,34 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <div class="card-body">
             <h3 class="card-title">Development and Financing of Solar/Wind Projects</h3>
             <p class="card-text">
-              Structured PPAs and equipment rental models that enable long-term clean
-              energy supply for industrial clients and utilities.
+              We develop and finance solar and wind energy plants for C&amp;I clients and IPPs,
+              delivering clean power under long-term contracts that optimize efficiency and
+              cost effectiveness.
             </p>
             <ul class="product-list" role="list">
               <li>Power Purchase Agreements (PPAs)</li>
               <li>Equipment Rental Agreements (ERAs)</li>
             </ul>
+            <div class="definition-grid">
+              <div class="card definition-card">
+                <div class="card-body">
+                  <p class="definition-title">Power Purchase Agreement (PPA)</p>
+                  <p class="card-text">
+                    A contract between a power producer and a client defining the price,
+                    quantity, and duration of electricity sale.
+                  </p>
+                </div>
+              </div>
+              <div class="card definition-card">
+                <div class="card-body">
+                  <p class="definition-title">Equipment Rental Agreement (ERA)</p>
+                  <p class="card-text">
+                    A contract outlining rental duration, payment terms, and responsibilities
+                    for equipment use between owner and renter.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -45,14 +76,49 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <div class="card-body">
             <h3 class="card-title">Energy Storage as a Service</h3>
             <p class="card-text">
-              Enercap electrostatic storage paired with AI-enabled power electronics
-              for high-cycle, non-degrading, and safe energy storage.
+              Enercap electrostatic storage paired with AI-enabled power electronics sets
+              a new standard for efficiency, reliability, and sustainability across
+              energy-intensive applications.
             </p>
-            <ul class="product-list" role="list">
-              <li>Electrostatic storage with long life and fast charging</li>
-              <li>Encapsulated capacitor cells (not chemical batteries)</li>
-              <li>Algorithm-based supercapacitor control electronics</li>
-            </ul>
+            <div class="feature-grid">
+              <div class="card feature-card">
+                <div class="card-body">
+                  <h4 class="card-title">Enercap Storage Technology</h4>
+                  <p class="card-text">
+                    Electrostatic storage offers long life, fast charging, non-degrading
+                    performance, and safe, recyclable, and biodegradable materials.
+                  </p>
+                </div>
+              </div>
+              <div class="card feature-card">
+                <div class="card-body">
+                  <h4 class="card-title">Not a Chemical Battery</h4>
+                  <p class="card-text">
+                    Encapsulated capacitor cells are distinct from lithium-ion, LTO, or
+                    hybrid battery systems.
+                  </p>
+                </div>
+              </div>
+              <div class="card feature-card">
+                <div class="card-body">
+                  <h4 class="card-title">Supercapacitor Control</h4>
+                  <p class="card-text">
+                    Algorithm-based control electronics manage active balancing in series
+                    and parallel configurations, deliver a flat discharge curve, and
+                    regulate self-discharge.
+                  </p>
+                </div>
+              </div>
+              <div class="card feature-card">
+                <div class="card-body">
+                  <h4 class="card-title">Beyond Supercaps</h4>
+                  <p class="card-text">
+                    Designed for energy-intensive applications across telecom, residential
+                    backup, grid storage, EV charging, microgrids, and transportation.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -94,8 +160,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <div class="card-body">
               <h3 class="card-title">Telecom</h3>
               <p class="card-text">
-                Ensirius storage delivers degradation-free cycles for BTS, data center,
-                and fixed-line network applications.
+                Ensirius is the telecom go-to for long cycle life and degradation-free
+                performance across BTS, data center, and fixed-line networks.
               </p>
             </div>
           </a>
@@ -110,8 +176,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <div class="card-body">
               <h3 class="card-title">Microgrid</h3>
               <p class="card-text">
-                Enbox solutions provide reliable, stable, and maintenance-free energy
-                from kWh to MWh scales.
+                Enbox solutions provide reliable, stable, maintenance-free energy that can
+                be deployed from kWh to MWh scale.
               </p>
             </div>
           </a>
@@ -126,8 +192,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <div class="card-body">
               <h3 class="card-title">Grid</h3>
               <p class="card-text">
-                Enpack platforms support grid services and renewable generation stability
-                with low LCOS and a reduced environmental footprint.
+                Enpack platforms support grid services and renewable stability with a focus
+                on lower LCOS and reduced environmental footprint.
               </p>
             </div>
           </a>
@@ -142,8 +208,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <div class="card-body">
               <h3 class="card-title">EV</h3>
               <p class="card-text">
-                Batterix solutions deliver longer range, faster charging, and wider
-                operating temperature performance for EV applications.
+                Batterix solutions are positioned for longer range, faster charging, wider
+                operating temperature range, and extended life in EV applications.
               </p>
             </div>
           </a>
@@ -167,8 +233,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <div class="card-body">
             <h3 class="card-title">Rent-to-Own Residential Solar</h3>
             <p class="card-text">
-              The B-Smart project delivers convenient residential solar solutions with
-              flexible ownership models.
+              The B-Smart project expands access to residential solar with tailored,
+              convenient solutions designed for long-term energy independence.
+            </p>
+            <p class="card-text">
+              We aim to develop and finance renewable energy infrastructure that makes
+              clean power accessible to households across Pakistan.
             </p>
           </div>
         </article>
@@ -177,8 +247,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <div class="card-body">
             <h3 class="card-title">Residential Energy Storage</h3>
             <p class="card-text">
-              Encap, Enwall, and Ensega systems provide safe, long-lasting, and
-              environmentally sustainable home storage solutions.
+              Encap, Enwall, and Ensega systems deliver safe, longest-lasting, and
+              environmentally sustainable storage that is easy to install, quick to
+              commission, and degradation free.
+            </p>
+            <p class="card-text">
+              Advanced materials science and power electronics provide predictable,
+              reliable residential energy storage.
             </p>
             <ul class="product-list" role="list">
               <li>
@@ -256,6 +331,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     margin: 0;
   }
 
+  .page-subtitle-group {
+    display: grid;
+    gap: var(--space-3);
+  }
+
   .product-grid {
     display: grid;
     gap: var(--space-6);
@@ -299,6 +379,39 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
   .card-link:hover {
     text-decoration: none;
+  }
+
+  .definition-grid {
+    margin-top: var(--space-4);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .definition-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .definition-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-grid {
+    margin-top: var(--space-4);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   .cta {
