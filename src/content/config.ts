@@ -1,15 +1,23 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 // News/Media Collection
 const news = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     excerpt: z.string(),
     publishDate: z.coerce.date(),
     pubDate: z.coerce.date().optional(),
     author: z.string().optional(),
-    category: z.enum(['News', 'Press Release', 'Announcement', 'Media Coverage', 'media']).default('News'),
+    category: z
+      .enum([
+        "News",
+        "Press Release",
+        "Announcement",
+        "Media Coverage",
+        "media",
+      ])
+      .default("News"),
     featured: z.boolean().default(false),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
@@ -22,65 +30,115 @@ const news = defineCollection({
 
 // Projects Collection (Wind, Solar, etc.)
 const projects = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     shortTitle: z.string().optional(),
     excerpt: z.string(),
-    category: z.enum(['Wind', 'Solar', 'Hydro', 'Hybrid']),
-    status: z.enum(['Operational', 'Under Construction', 'Planning', 'Completed']).default('Operational'),
+    category: z.enum(["Wind", "Solar", "Hydro", "Hybrid"]),
+    status: z
+      .enum(["Operational", "Under Construction", "Planning", "Completed"])
+      .default("Operational"),
     location: z.string(),
     capacity: z.string(), // e.g., "50 MW"
     commissionDate: z.coerce.date().optional(),
     featured: z.boolean().default(false),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
-    gallery: z.array(z.object({
-      src: z.string(),
-      alt: z.string(),
-    })).optional(),
-    stats: z.array(z.object({
-      label: z.string(),
-      value: z.string(),
-    })).optional(),
+    gallery: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+        }),
+      )
+      .optional(),
+    stats: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+        }),
+      )
+      .optional(),
     draft: z.boolean().default(false),
   }),
 });
 
 // Investor Documents Collection
 const documents = defineCollection({
-  type: 'data',
+  type: "data",
   schema: z.object({
     title: z.string(),
     category: z.enum([
-      'Annual Report',
-      'Quarterly Report',
-      'Financial Statement',
-      'Corporate Notice',
-      'Shariah Compliance',
-      'Governance',
-      'Other'
+      "Annual Report",
+      "Quarterly Report",
+      "Financial Statement",
+      "Corporate Notice",
+      "Shariah Compliance",
+      "Governance",
+      "Other",
     ]),
     year: z.number(),
-    quarter: z.enum(['Q1', 'Q2', 'Q3', 'Q4']).optional(),
+    quarter: z.enum(["Q1", "Q2", "Q3", "Q4"]).optional(),
     publishDate: z.coerce.date(),
     fileUrl: z.string(),
     fileSize: z.string().optional(), // e.g., "2.4 MB"
-    fileType: z.enum(['pdf', 'xlsx', 'docx']).default('pdf'),
+    fileType: z.enum(["pdf", "xlsx", "docx"]).default("pdf"),
   }),
 });
 
 // Team Members Collection (Governance)
 const team = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     name: z.string(),
     role: z.string(),
-    groups: z.array(z.enum(['board', 'management', 'shariah'])),
+    groups: z.array(z.enum(["board", "management", "shariah"])),
     bio: z.string(),
     image: z.string().optional(),
     linkedinUrl: z.string().url().optional(),
     order: z.number().default(0),
+  }),
+});
+
+// Products Collection (Energy Storage Solutions)
+const products = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    category: z.enum(["Energy Storage Solutions"]),
+    segment: z.string(),
+    positioning: z.string(),
+    technology: z.string(),
+    atAGlance: z.array(
+      z.object({
+        label: z.string(),
+        value: z.string(),
+      }),
+    ),
+    benefits: z.array(z.string()),
+    useCases: z.array(z.string()),
+    specs: z.array(
+      z.object({
+        label: z.string(),
+        value: z.string(),
+      }),
+    ),
+    resources: z
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string().url(),
+          type: z
+            .enum(["Datasheet", "Manual", "Overview", "Resource"])
+            .optional(),
+        }),
+      )
+      .optional(),
+    order: z.number(),
+    seoDescription: z.string().optional(),
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -89,4 +147,5 @@ export const collections = {
   projects,
   documents,
   team,
+  products,
 };

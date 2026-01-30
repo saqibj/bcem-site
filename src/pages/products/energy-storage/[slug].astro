@@ -1,0 +1,436 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const energyStorageProducts = (await getCollection('products', ({ data }) =>
+  data.category === 'Energy Storage Solutions' && data.draft !== true
+)).sort((a, b) => a.data.order - b.data.order);
+
+export async function getStaticPaths() {
+  const products = await getCollection('products', ({ data }) =>
+    data.category === 'Energy Storage Solutions' && data.draft !== true
+  );
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const currentIndex = energyStorageProducts.findIndex((item) => item.slug === product.slug);
+const prevProduct = currentIndex > 0 ? energyStorageProducts[currentIndex - 1] : null;
+const nextProduct =
+  currentIndex >= 0 && currentIndex < energyStorageProducts.length - 1
+    ? energyStorageProducts[currentIndex + 1]
+    : null;
+---
+
+<BaseLayout title={`${product.data.title} Energy Storage`} description={product.data.seoDescription ?? product.data.positioning}>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/products/">Products</a></li>
+          <li><a href="/products#energy-storage">Energy Storage Solutions</a></li>
+          <li aria-current="page">{product.data.title}</li>
+        </ol>
+      </nav>
+      <a class="back-link" href="/products/">Back to Products</a>
+      <p class="page-eyebrow">Energy Storage Solutions</p>
+      <h1 class="page-title">{product.data.title}</h1>
+      <p class="page-subtitle">{product.data.positioning}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header-left">
+        <h2 class="section-title">At a glance</h2>
+        <p class="section-subtitle">Key product details for quick comparison.</p>
+      </div>
+      <div class="glance-grid">
+        {product.data.atAGlance.map((item) => (
+          <div class="card glance-card">
+            <div class="card-body">
+              <p class="glance-label">{item.label}</p>
+              <p class="glance-value">{item.value}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="section-header section-header-left">
+        <h2 class="section-title">Benefits</h2>
+      </div>
+      <ul class="feature-list" role="list">
+        {product.data.benefits.map((benefit) => (
+          <li>{benefit}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header-left">
+        <h2 class="section-title">Use cases</h2>
+      </div>
+      <div class="use-case-grid">
+        {product.data.useCases.map((useCase) => (
+          <div class="card use-case-card">
+            <div class="card-body">
+              <p class="use-case-text">{useCase}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="section-header section-header-left">
+        <h2 class="section-title">Technical specs</h2>
+      </div>
+      <div class="specs-card card">
+        <div class="card-body">
+          <table class="specs-table">
+            <tbody>
+              {product.data.specs.map((spec) => (
+                <tr>
+                  <th scope="row">{spec.label}</th>
+                  <td>{spec.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="specs-disclaimer">
+            Specifications vary by model and configuration; refer to datasheets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {product.data.resources && product.data.resources.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-header section-header-left">
+          <h2 class="section-title">Downloads and resources</h2>
+        </div>
+        <ul class="resource-list" role="list">
+          {product.data.resources.map((resource) => (
+            <li class="card resource-card">
+              <div class="card-body">
+                <a
+                  href={resource.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="resource-link"
+                  aria-label={`Open ${resource.label}`}
+                >
+                  <span>{resource.label}</span>
+                  <span class="resource-meta">{resource.type ?? 'Resource'}</span>
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <nav class="product-nav" aria-label="Energy storage product navigation">
+        <a class="product-nav-link" href="/products/">Back to Products</a>
+        <div class="product-nav-links">
+          {prevProduct && (
+            <a class="product-nav-link" href={`/products/energy-storage/${prevProduct.slug}/`}>
+              Previous: {prevProduct.data.title}
+            </a>
+          )}
+          {nextProduct && (
+            <a class="product-nav-link" href={`/products/energy-storage/${nextProduct.slug}/`}>
+              Next: {nextProduct.data.title}
+            </a>
+          )}
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2 class="section-title">Talk to our team</h2>
+          <p class="section-subtitle">
+            Connect with BCEM to design a clean energy storage solution that fits your goals.
+          </p>
+        </div>
+        <a href="/contact" class="btn btn-primary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-20);
+  }
+
+  .breadcrumbs {
+    margin-bottom: var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--color-primary-200);
+  }
+
+  .breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .breadcrumbs li::after {
+    content: '/';
+    color: var(--color-primary-200);
+  }
+
+  .breadcrumbs li:last-child::after {
+    content: '';
+  }
+
+  .breadcrumbs a {
+    color: var(--color-primary-100);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-text-inverse);
+  }
+
+  .back-link {
+    display: inline-flex;
+    font-size: var(--font-size-sm);
+    color: var(--color-primary-100);
+    text-decoration: none;
+    margin-bottom: var(--space-4);
+  }
+
+  .back-link:hover {
+    color: var(--color-text-inverse);
+  }
+
+  .page-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-200);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-100);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .section-header-left {
+    text-align: left;
+    margin-inline: 0;
+  }
+
+  .glance-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .glance-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .glance-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .glance-card {
+    height: 100%;
+  }
+
+  .glance-label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .glance-value {
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .feature-list {
+    display: grid;
+    gap: var(--space-3);
+    padding-left: var(--space-5);
+    color: var(--color-text-secondary);
+  }
+
+  .use-case-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .use-case-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .use-case-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .use-case-text {
+    margin: 0;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+
+  .specs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .specs-table th,
+  .specs-table td {
+    text-align: left;
+    padding-block: var(--space-3);
+    border-bottom: 1px solid var(--color-border-light);
+    vertical-align: top;
+  }
+
+  .specs-table th {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-semibold);
+    width: 40%;
+  }
+
+  .specs-table td {
+    color: var(--color-text-secondary);
+  }
+
+  .specs-disclaimer {
+    margin-top: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .resource-list {
+    display: grid;
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .resource-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+  }
+
+  .resource-link:hover {
+    color: var(--color-primary-700);
+    text-decoration: none;
+  }
+
+  .resource-meta {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .product-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .product-nav {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .product-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .product-nav-link {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .cta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+</style>

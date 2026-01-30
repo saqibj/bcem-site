@@ -1,0 +1,44 @@
+---
+title: "Enpack"
+category: "Energy Storage Solutions"
+segment: "Grid"
+positioning: "Containerized storage for grid services, renewable stability, and off-grid EV charging."
+technology: "Electrostatic storage platform in a containerized BESS solution."
+order: 3
+seoDescription: "Enpack delivers containerized energy storage for grid services, microgrids, and off-grid EV charging."
+atAGlance:
+  - label: "Segment"
+    value: "Grid, microgrid, off-grid EV charging"
+  - label: "Key differentiators"
+    value: "Supports grid services and renewable stability with low LCOS and reduced footprint."
+  - label: "Technology"
+    value: "Containerized electrostatic storage platform."
+  - label: "Form factor"
+    value: "Available in 10 ft, 20 ft, and 40 ft containers."
+benefits:
+  - "Supports grid services and renewable integration."
+  - "Containerized delivery for rapid deployment."
+  - "Scalable from kWh to MWh projects."
+  - "Flexible use across grid and off-grid scenarios."
+useCases:
+  - "Grid services and stabilization"
+  - "Renewable generation firming"
+  - "Microgrid storage"
+  - "Off-grid EV charging hubs"
+specs:
+  - label: "Deployment scale"
+    value: "kWh to MWh (project dependent)"
+  - label: "Container sizes"
+    value: "10 ft, 20 ft, 40 ft"
+  - label: "Use modes"
+    value: "Microgrid, BESS, off-grid EV charging"
+resources:
+  - label: "Enpack product overview"
+    url: "https://emtel.group/enpack/"
+    type: "Overview"
+  - label: "Enpack overview (Symatx)"
+    url: "https://www.symatx.ca/enpack"
+    type: "Overview"
+---
+
+<!-- Sources: https://bcem-site.pages.dev/products/ ; https://emtel.group/enpack/ ; https://www.symatx.ca/enpack -->
