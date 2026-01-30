@@ -1,0 +1,257 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Products">
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <p class="page-eyebrow">Products</p>
+        <h1 class="page-title">Clean Energy Solutions for Every Scale</h1>
+        <p class="page-subtitle">
+          Shariah-compliant renewable energy and storage solutions designed for commercial,
+          industrial, and residential partners across Pakistan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Commercial & Industrial</h2>
+        <p class="section-subtitle">
+          Customized solutions for IPPs and C&I clients to deliver clean power, optimize
+          operating costs, and support long-term energy resilience.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Development and Financing of Solar/Wind Projects</h3>
+            <p class="card-text">
+              Structured PPAs and equipment rental models that enable long-term clean
+              energy supply for industrial clients and utilities.
+            </p>
+            <ul class="product-list" role="list">
+              <li>Power Purchase Agreements (PPAs)</li>
+              <li>Equipment Rental Agreements (ERAs)</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Energy Storage as a Service</h3>
+            <p class="card-text">
+              Enercap electrostatic storage paired with AI-enabled power electronics
+              for high-cycle, non-degrading, and safe energy storage.
+            </p>
+            <ul class="product-list" role="list">
+              <li>Electrostatic storage with long life and fast charging</li>
+              <li>Encapsulated capacitor cells (not chemical batteries)</li>
+              <li>Algorithm-based supercapacitor control electronics</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Investment in Energy Efficiency Projects</h3>
+            <p class="card-text">
+              Financing solutions for efficient equipment upgrades that reduce energy
+              wastage and deliver long-term savings.
+            </p>
+            <ul class="product-list" role="list">
+              <li>Energy audit-driven retrofit programs</li>
+              <li>Financing for high-efficiency equipment</li>
+              <li>Performance-focused energy optimization</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Energy Storage Solutions</h2>
+        <p class="section-subtitle">
+          A lineup of energy storage platforms engineered for telecom, microgrid, grid,
+          and EV applications.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Telecom</h3>
+            <p class="card-text">
+              Ensirius storage delivers degradation-free cycles for BTS, data center,
+              and fixed-line network applications.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Microgrid</h3>
+            <p class="card-text">
+              Enbox solutions provide reliable, stable, and maintenance-free energy
+              from kWh to MWh scales.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Grid</h3>
+            <p class="card-text">
+              Enpack platforms support grid services and renewable generation stability
+              with low LCOS and a reduced environmental footprint.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">EV</h3>
+            <p class="card-text">
+              Batterix solutions deliver longer range, faster charging, and wider
+              operating temperature performance for EV applications.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Residential</h2>
+        <p class="section-subtitle">
+          Scalable solar and storage solutions that empower households to transition
+          to reliable, renewable energy.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Rent-to-Own Residential Solar</h3>
+            <p class="card-text">
+              The B-Smart project delivers convenient residential solar solutions with
+              flexible ownership models.
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-body">
+            <h3 class="card-title">Residential Energy Storage</h3>
+            <p class="card-text">
+              Encap, Enwall, and Ensega systems provide safe, long-lasting, and
+              environmentally sustainable home storage solutions.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-alt">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2 class="section-title">Power Your Home or Business with Burj</h2>
+          <p class="section-subtitle">
+            Connect with our team to design a clean energy solution that fits your goals.
+          </p>
+        </div>
+        <a href="/contact" class="btn btn-primary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    color: var(--color-text-inverse);
+    padding-block: var(--space-20);
+  }
+
+  .page-hero-content {
+    max-width: var(--container-3xl);
+  }
+
+  .page-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-size: var(--font-size-xs);
+    color: var(--color-primary-200);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-100);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .product-grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .product-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .product-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .product-list {
+    margin: var(--space-4) 0 0;
+    display: grid;
+    gap: var(--space-2);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .cta {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+</style>
