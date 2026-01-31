@@ -40,19 +40,6 @@ specs:
     value: "Approx. 6 minutes"
   - label: "Thermal runaway (reported)"
     value: "Not observed in reported tests"
-resources:
-  - label: "Graphene battery performance brief (PDF)"
-    url: "https://encap.energy/wp-content/uploads/2023/03/GN-CEO-MENA-Infusion-V3.pdf"
-    type: "Datasheet"
-  - label: "Energy density testing context"
-    url: "https://emtel.group/how-emtels-supercapacitor-batteries-outperform-traditional-batteries/"
-    type: "Overview"
-  - label: "BCEM product lineup overview"
-    url: "https://bcem-site.pages.dev/products/"
-    type: "Overview"
-  - label: "EV storage positioning (Burj Modaraba)"
-    url: "https://www.burjmodaraba.com/products/"
-    type: "Overview"
 ---
 
 <!-- Sources: https://bcem-site.pages.dev/products/ ; https://encap.energy/wp-content/uploads/2023/03/GN-CEO-MENA-Infusion-V3.pdf ; https://emtel.group/how-emtels-supercapacitor-batteries-outperform-traditional-batteries/ ; https://www.burjmodaraba.com/products/ -->

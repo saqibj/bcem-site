@@ -42,19 +42,6 @@ specs:
     value: "Greater than 95%"
   - label: "Module variants"
     value: "500 Wh 12V and 1.2 kWh 12V (datasheets)"
-resources:
-  - label: "Ensega overview"
-    url: "https://emtel.group/ensega/"
-    type: "Overview"
-  - label: "Ensega overview (Symatx)"
-    url: "https://www.symatx.ca/ensega"
-    type: "Overview"
-  - label: "Ensega 500 Wh 12V datasheet (PDF)"
-    url: "https://enercapamerica.com/wp-content/uploads/Ensega-500Wh-12V-TDS.pdf"
-    type: "Datasheet"
-  - label: "Ensega 1.2 kWh 12V datasheet (PDF)"
-    url: "https://enercapamerica.com/wp-content/uploads/Ensega-1.2kWh-12V-TDS.pdf"
-    type: "Datasheet"
 ---
 
 <!-- Sources: https://bcem-site.pages.dev/products/ ; https://emtel.group/ensega/ ; https://www.symatx.ca/ensega ; https://enercapamerica.com/wp-content/uploads/Ensega-500Wh-12V-TDS.pdf ; https://enercapamerica.com/wp-content/uploads/Ensega-1.2kWh-12V-TDS.pdf -->

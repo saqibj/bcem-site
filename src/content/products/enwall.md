@@ -43,16 +43,6 @@ specs:
     value: "Integrated Enserver and Encap module"
   - label: "Phase configuration"
     value: "Single- or three-phase (model dependent)"
-resources:
-  - label: "Enwall user manual (PDF)"
-    url: "https://enercap.energy/wp-content/uploads/2025/06/ENWALL-Module-User-Manual-ENW-16k-48-10k-3P-X-X-X_1V0_GEN1-17thMarch2025.pdf"
-    type: "Manual"
-  - label: "Enwall technical datasheet (PDF)"
-    url: "https://encap.energy/wp-content/uploads/2024/06/ENWALL-Module-TDS-ENW-8k-48-5k-X-X-X-X_1V0_GEN1-12June24-2.pdf"
-    type: "Datasheet"
-  - label: "Enercap America product overview"
-    url: "https://enercapamerica.com/"
-    type: "Overview"
 ---
 
 <!-- Sources: https://bcem-site.pages.dev/products/ ; https://enercap.energy/wp-content/uploads/2025/06/ENWALL-Module-User-Manual-ENW-16k-48-10k-3P-X-X-X_1V0_GEN1-17thMarch2025.pdf ; https://encap.energy/wp-content/uploads/2024/06/ENWALL-Module-TDS-ENW-8k-48-5k-X-X-X-X_1V0_GEN1-12June24-2.pdf ; https://enercapamerica.com/ -->

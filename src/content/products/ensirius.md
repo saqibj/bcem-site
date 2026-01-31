@@ -46,13 +46,6 @@ specs:
     value: "25 years"
   - label: "Communications"
     value: "WiFi"
-resources:
-  - label: "ENSIRIUS module technical datasheet (PDF)"
-    url: "https://encap.energy/wp-content/uploads/2023/10/ENSIRIUS-Module_TDS_EN-8k-48-1.5C-X-X-X-X_1V0_GEN1_10Oct2023.pdf"
-    type: "Datasheet"
-  - label: "ENSIRIUS module user manual (PDF)"
-    url: "https://encap.energy/wp-content/uploads/2024/06/ENSIRIUS-Module_User-Manualseries-connection_EN-8k-48-1C-X-X-X-X-1V0-GEN1_22Apil2024.pdf"
-    type: "Manual"
 ---
 
 <!-- Sources: https://bcem-site.pages.dev/products/ ; https://encap.energy/wp-content/uploads/2023/10/ENSIRIUS-Module_TDS_EN-8k-48-1.5C-X-X-X-X_1V0_GEN1_10Oct2023.pdf ; https://encap.energy/wp-content/uploads/2024/06/ENSIRIUS-Module_User-Manualseries-connection_EN-8k-48-1C-X-X-X-X-1V0-GEN1_22Apil2024.pdf -->

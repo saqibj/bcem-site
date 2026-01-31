@@ -41,13 +41,6 @@ specs:
     value: "10 ft, 20 ft, 40 ft"
   - label: "Use modes"
     value: "Microgrid, BESS, off-grid EV charging"
-resources:
-  - label: "Enpack product overview"
-    url: "https://emtel.group/enpack/"
-    type: "Overview"
-  - label: "Enpack overview (Symatx)"
-    url: "https://www.symatx.ca/enpack"
-    type: "Overview"
 ---
 
 <!-- Sources: https://bcem-site.pages.dev/products/ ; https://emtel.group/enpack/ ; https://www.symatx.ca/enpack -->

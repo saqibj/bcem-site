@@ -133,17 +133,6 @@ const products = defineCollection({
         value: z.string(),
       }),
     ),
-    resources: z
-      .array(
-        z.object({
-          label: z.string(),
-          url: z.string().url(),
-          type: z
-            .enum(["Datasheet", "Manual", "Overview", "Resource"])
-            .optional(),
-        }),
-      )
-      .optional(),
     order: z.number(),
     seoDescription: z.string().optional(),
     draft: z.boolean().default(false),

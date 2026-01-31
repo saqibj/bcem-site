@@ -40,13 +40,6 @@ specs:
     value: "10 ft, 20 ft, 40 ft (available)"
   - label: "Maintenance"
     value: "Maintenance-free operation (partner stated)"
-resources:
-  - label: "Enbox overview (Burj Modaraba partner listing)"
-    url: "https://www.burjmodaraba.com/products/"
-    type: "Overview"
-  - label: "Storage systems partner listing"
-    url: "https://www.e-rocas.com/storage-systems"
-    type: "Overview"
 ---
 
 <!-- Sources: https://bcem-site.pages.dev/products/ ; https://www.burjmodaraba.com/products/ ; https://www.e-rocas.com/storage-systems -->

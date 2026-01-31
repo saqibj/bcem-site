@@ -255,23 +255,35 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               Advanced materials science and power electronics provide predictable,
               reliable residential energy storage.
             </p>
-            <ul class="product-list" role="list">
-              <li>
-                <a href="/products/energy-storage/encap/" aria-label="Encap residential storage">
-                  Encap
-                </a>
-              </li>
-              <li>
-                <a href="/products/energy-storage/enwall/" aria-label="Enwall residential storage">
-                  Enwall
-                </a>
-              </li>
-              <li>
-                <a href="/products/energy-storage/ensega/" aria-label="Ensega residential storage">
-                  Ensega
-                </a>
-              </li>
-            </ul>
+            <div class="sub-card-grid">
+              <a
+                class="card sub-card-link"
+                href="/products/energy-storage/encap/"
+                aria-label="Encap residential storage"
+              >
+                <div class="card-body">
+                  <p class="sub-card-title">Encap</p>
+                </div>
+              </a>
+              <a
+                class="card sub-card-link"
+                href="/products/energy-storage/enwall/"
+                aria-label="Enwall residential storage"
+              >
+                <div class="card-body">
+                  <p class="sub-card-title">Enwall</p>
+                </div>
+              </a>
+              <a
+                class="card sub-card-link"
+                href="/products/energy-storage/ensega/"
+                aria-label="Ensega residential storage"
+              >
+                <div class="card-body">
+                  <p class="sub-card-title">Ensega</p>
+                </div>
+              </a>
+            </div>
           </div>
         </article>
       </div>
@@ -379,6 +391,36 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
   .card-link:hover {
     text-decoration: none;
+  }
+
+  .sub-card-grid {
+    margin-top: var(--space-4);
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .sub-card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .sub-card-link {
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+
+  .sub-card-link:hover {
+    text-decoration: none;
+  }
+
+  .sub-card-title {
+    margin: 0;
+    text-align: center;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
   }
 
   .definition-grid {

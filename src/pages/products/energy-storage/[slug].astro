@@ -142,34 +142,6 @@ const nextProduct =
     </div>
   </section>
 
-  {product.data.resources && product.data.resources.length > 0 && (
-    <section class="section">
-      <div class="container">
-        <div class="section-header section-header-left">
-          <h2 class="section-title">Downloads and resources</h2>
-        </div>
-        <ul class="resource-list" role="list">
-          {product.data.resources.map((resource) => (
-            <li class="card resource-card">
-              <div class="card-body">
-                <a
-                  href={resource.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="resource-link"
-                  aria-label={`Open ${resource.label}`}
-                >
-                  <span>{resource.label}</span>
-                  <span class="resource-meta">{resource.type ?? 'Resource'}</span>
-                </a>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  )}
-
   <section class="section">
     <div class="container">
       <nav class="product-nav" aria-label="Energy storage product navigation">

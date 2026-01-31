@@ -42,16 +42,6 @@ specs:
     value: "100%"
   - label: "Maintenance"
     value: "No routine maintenance (partner stated)"
-resources:
-  - label: "Encap 48V 10 kWh overview"
-    url: "https://emtel.group/encap-48v-10kwh/"
-    type: "Overview"
-  - label: "Enercap America product overview"
-    url: "https://enercapamerica.com/"
-    type: "Overview"
-  - label: "Encap technical datasheet (PDF)"
-    url: "https://encap.energy/wp-content/uploads/2023/03/ENCAP-10kWh-48V-Technical-Datasheet.pdf"
-    type: "Datasheet"
 ---
 
 <!-- Sources: https://bcem-site.pages.dev/products/ ; https://emtel.group/encap-48v-10kwh/ ; https://enercapamerica.com/ ; https://encap.energy/wp-content/uploads/2023/03/ENCAP-10kWh-48V-Technical-Datasheet.pdf -->
